@@ -12,7 +12,7 @@ Kullanıcının mesajındaki tüm metin = **kaynak prompt**. Ek argüman varsa o
 1. **Skill:** `.cursor/skills/zero-hallucination/SKILL.md` uygula.
 2. **Oku:** `docs/00-INDEX.md`, `.cursor/rules/00-overmind-zero-hallucination.mdc`
 3. **YAPILACAKLAR oluştur/güncelle:**
-   - `bash scripts/governance/init-yapilacaklar.sh "<prompt özeti>"`
+   - Fabrika şablonunda dosya **uninitialized** ise: `bash scripts/governance/init-yapilacaklar.sh "<prompt özeti>"` (stub'ı F0–F8 planıyla değiştirir)
    - Skill: `.cursor/skills/yapilacaklar-planner/SKILL.md`
 4. Prompta göre **F1** ve **F7** tablolarına özel maddeler ekle (Ajan · L1 · Kabul · `bekliyor`).
 5. **F0** fazını `işleniyor` bırak; F0.1'den başla — **henüz feature kodu yazma**.

@@ -15,6 +15,7 @@ REQUIRED_FILES=(
   "LICENSE"
   ".gitignore"
   "AGENTS.md"
+  "YAPILACAKLAR.md"
   "templates/YAPILACAKLAR.template.md"
   ".cursor/rules/00-overmind-zero-hallucination.mdc"
   ".cursor/rules/01-product-cpo.mdc"

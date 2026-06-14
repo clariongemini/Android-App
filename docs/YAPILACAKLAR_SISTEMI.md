@@ -4,6 +4,16 @@
 
 Geliştirici prompt verdiğinde ajan **doğrudan koda atlamaz**. Önce `YAPILACAKLAR.md` oluşturulur; temelden (F0) anahtar teslime (F8) kadar faz faz ilerlenir. Halüsinasyon protokolü her oturumda otomatik — `.cursor/rules/00-overmind-zero-hallucination.mdc`.
 
+## Fabrika şablonu vs uygulama projesi
+
+| | Fabrika GitHub reposu | Uygulama projesi |
+|---|----------------------|------------------|
+| `YAPILACAKLAR.md` | **Boş stub** (`uninitialized`) | `/baslat` veya `init-new-app.sh` ile dolu F0–F8 |
+| Faz tabloları | Yok — bilerek | Proje promptuna göre |
+| Doğrulama | `validate-yapilacaklar.py` stub'ı geçer | Tam faz disiplini zorunlu |
+
+Stub işaretleyici: `<!-- yapilacaklar-state: uninitialized -->`
+
 ## Metafor
 
 | Faz | Bina | İçerik |

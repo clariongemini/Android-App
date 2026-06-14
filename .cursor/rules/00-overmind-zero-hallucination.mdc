@@ -9,7 +9,7 @@ Bu kural **her oturumda otomatik** uygulanır. Geliştirici uyarı yazmasa bile 
 
 ## Mutlak ön koşul (kod/dosya değişikliği öncesi)
 
-1. **`YAPILACAKLAR.md` oku** — yoksa veya boşsa **önce** `/baslat` akışını uygula; dosyayı oluştur.
+1. **`YAPILACAKLAR.md` oku** — yoksa, boşsa veya `uninitialized` ise **önce** `/baslat` veya `init-new-app.sh` / `init-yapilacaklar.sh` akışını uygula.
 2. **`docs/00-INDEX.md`** + aktif faz satırlarını oku.
 3. **Halüsinasyon sıfır:** Var olmayan dosya, sınıf, API, script veya governance kaydı **uydurma**. Okumadan referans verme.
 4. **Araç zorunluluğu:** Dosya içeriği, grep, glob, terminal — tahmin değil kanıt.

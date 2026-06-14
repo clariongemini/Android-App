@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 TPL="$ROOT/templates/YAPILACAKLAR.template.md"
 OUT="$ROOT/YAPILACAKLAR.md"
-FACTORY_VERSION="2.1.0-stable"
+FACTORY_VERSION="$(python3 -c "import json; print(json.load(open('$ROOT/.factory/meta.json'))['version'])")"
 DATE="$(date +%Y-%m-%d)"
 
 APP_NAME="Factory"

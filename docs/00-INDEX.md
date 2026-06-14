@@ -86,6 +86,6 @@ Tam eşleme: `governance/executive/HIERARCHICAL_AUDIT_CHAIN.md`
 |---|-------------------|------------------|
 | Android kodu | Şablon (`templates/android/`) | `app/`, `feature/` |
 | PRODUCT_BRIEF | Şablon | Proje özel |
-| YAPILACAKLAR | Fabrika geliştirme planı | Proje faz planı (`init-yapilacaklar.sh`) |
+| YAPILACAKLAR | Boş stub (`/baslat` veya `init-new-app.sh` ile dolar) | Proje faz planı |
 | governance runtime | Seed charter + script | `init-governance.sh` ile proje verisi |
 | Amaç | Standartları yaymak | Uygulama geliştirmek |

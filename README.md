@@ -809,7 +809,7 @@ Monetization: [e.g. subscription, 7-day free trial]
 │   ├── certification/        # CERTIFIED_BY_FACTORY
 │   └── regression/           # Regression pattern DB
 ├── runtime/                  # Canlı veri (gitignore) — governance + factory + analytics
-├── YAPILACAKLAR.md           # Aktif faz planı (proje bazlı)
+├── YAPILACAKLAR.md           # Boş stub — /baslat veya init-new-app ile dolar
 ├── AGENTS.md                 # Ajan dizini ve denetim zinciri
 ├── governance/               # Executive OS charter + protokoller
 │   ├── executive/            # CEO OS, hiyerarşik denetim, onay protokolü

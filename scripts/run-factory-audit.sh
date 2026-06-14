@@ -35,8 +35,8 @@ check "F0.1" "first-setup.sh mevcut" "$([[ -x "$REPO_ROOT/scripts/first-setup.sh
 check "F0.2" "init-governance.sh mevcut" "$([[ -x "$REPO_ROOT/scripts/governance/init-governance.sh" ]] && echo pass || echo fail)"
 check "F0.3" "docs/00-INDEX.md" "$([[ -f "$REPO_ROOT/docs/00-INDEX.md" ]] && echo pass || echo fail)"
 check "F0.M" "FACTORY_MISSION.md" "$([[ -f "$REPO_ROOT/FACTORY_MISSION.md" ]] && echo pass || echo fail)"
-check "F0.4" "YAPILACAKLAR.md + validator" \
-  "$(python3 "$REPO_ROOT/scripts/governance/validate-yapilacaklar.py" &>/dev/null && echo pass || echo fail)"
+check "F0.4" "YAPILACAKLAR stub veya validator" \
+  "$( [[ -f "$REPO_ROOT/YAPILACAKLAR.md" ]] && python3 "$REPO_ROOT/scripts/governance/validate-yapilacaklar.py" &>/dev/null && echo pass || echo fail)"
 check "F0.5" "validate-audit-chain.py" \
   "$(python3 "$REPO_ROOT/scripts/governance/validate-audit-chain.py" &>/dev/null && echo pass || echo fail)"
 

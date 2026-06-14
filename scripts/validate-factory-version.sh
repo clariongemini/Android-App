@@ -32,7 +32,7 @@ echo "==> Fabrika sürüm doğrulama (beklenen: $EXPECTED)"
 
 check_contains "$ROOT/scripts/init-new-app.sh" "FACTORY_VERSION=\"$EXPECTED\"" "init-new-app.sh"
 check_contains "$ROOT/scripts/governance/init-governance.sh" "FACTORY_VERSION=\"$EXPECTED\"" "init-governance.sh"
-check_contains "$ROOT/scripts/governance/init-yapilacaklar.sh" "FACTORY_VERSION=\"$EXPECTED\"" "init-yapilacaklar.sh"
+check_contains "$ROOT/scripts/governance/init-yapilacaklar.sh" ".factory/meta.json" "init-yapilacaklar.sh"
 check_contains "$ROOT/scripts/sync-standards.sh" "\"factory_version\": \"$EXPECTED\"" "sync-standards.sh"
 check_contains "$ROOT/YAPILACAKLAR.md" "v$EXPECTED" "YAPILACAKLAR.md"
 check_contains "$ROOT/docs/00-INDEX.md" "v$EXPECTED" "docs/00-INDEX.md"

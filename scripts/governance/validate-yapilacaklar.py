@@ -56,12 +56,21 @@ def sync_active_agents(text: str, active_phase: str | None) -> str:
     return text
 
 
+def is_uninitialized(text: str) -> bool:
+    return "yapilacaklar-state: uninitialized" in text
+
+
 def main() -> int:
     if not YAP.exists():
         print("   ❌ YAPILACAKLAR.md missing — run /baslat or init-new-app.sh")
         return 1
 
     text = YAP.read_text(encoding="utf-8")
+
+    if is_uninitialized(text):
+        print("   ⏸ YAPILACAKLAR uninitialized — factory template (run /baslat or init-new-app.sh)")
+        return 0
+
     errors: list[str] = []
 
     phase_headers = re.findall(
