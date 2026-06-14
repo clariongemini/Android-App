@@ -1,40 +1,127 @@
+<div align="center">
+
 # Ulas Autonomous Android APP Factory
 
-Android projelerini aynı standartla, Cursor üzerinde ajan kurallarıyla üretmek için kurduğum fabrika reposu.
+**Cursor-native Android üretim sistemi · Tek kaynak, ölçülebilir kalite, tekrarlanabilir teslimat**
 
-**Yazar:** [Ulaş Kaşıkcı](docs/AUTHOR.md) · **Lisans:** [MIT](LICENSE)
+<br>
 
-Bu depo tek bir uygulama değil. Standartlar, governance, Gradle şablonu ve `.cursor/rules/` burada; uygulama kodu `init-new-app.sh` veya `sync-standards.sh` ile hedef projeye gider.
+[![Version](https://img.shields.io/badge/sürüm-1.0.0-2563eb?style=for-the-badge)](.factory/meta.json)
+[![License](https://img.shields.io/badge/lisans-MIT-059669?style=for-the-badge)](LICENSE)
+[![Factory Health](https://img.shields.io/badge/factory_health-100%2F100-16a34a?style=for-the-badge)](docs/FACTORY_SCORECARD.md)
+[![CI](https://img.shields.io/github/actions/workflow/status/clariongemini/Android-App/validate.yml?branch=main&label=CI&style=for-the-badge)](https://github.com/clariongemini/Android-App/actions/workflows/validate.yml)
 
-33 katman · Executive OS · 16 ajan · 10 Gradle modülü · MCP (Browser, GitHub)
+<br>
 
-<p align="center">
-  <a href="https://github.com/clariongemini/Android-App">GitHub</a> ·
-  <a href="docs/BOOTSTRAP.md">Bootstrap</a> ·
-  <a href="docs/EXECUTIVE_OS.md">Executive OS</a> ·
-  <a href="AGENTS.md">Ajanlar</a>
+[![33 Layers](https://img.shields.io/badge/33_katman-360_bileşen-6366f1)](docs/33-LAYER-ARCHITECTURE.md)
+[![Executive OS](https://img.shields.io/badge/Executive_OS-7.0-8b5cf6)](docs/EXECUTIVE_OS.md)
+[![Agents](https://img.shields.io/badge/Cursor_ajanları-16-0ea5e9)](AGENTS.md)
+[![Gradle Modules](https://img.shields.io/badge/Gradle_modülü-10-f97316)](docs/02-ARCHITECTURE/ANDROID_STRUCTURE.md)
+[![MCP](https://img.shields.io/badge/MCP-Browser_·_GitHub-64748b)](docs/MCP_SETUP.md)
+
+<br>
+
+**[GitHub](https://github.com/clariongemini/Android-App)** ·
+**[Bootstrap](docs/BOOTSTRAP.md)** ·
+**[Executive OS](docs/EXECUTIVE_OS.md)** ·
+**[Ajanlar](AGENTS.md)** ·
+**[Yazar](docs/AUTHOR.md)**
+
+</div>
+
+---
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+<h3 align="left">Türkçe</h3>
+
+<p><strong>Ulas Autonomous Android APP Factory</strong>, Android uygulamalarını her seferinde aynı mühendislik disipliniyle üretmek için tasarlanmış <strong>GitHub template fabrika reposudur</strong>.</p>
+
+<p>Bu depo bir APK değildir. <strong>Standartlar, governance, Gradle şablonu ve Cursor ajan kuralları</strong> burada yaşar; uygulama kodu <code>init-new-app.sh</code> veya <code>sync-standards.sh</code> ile hedef projeye aktarılır.</p>
+
+<p>
+<strong>Yazar</strong> · <a href="docs/AUTHOR.md">Ulaş Kaşıkcı</a><br>
+<strong>Lisans</strong> · <a href="LICENSE">MIT</a><br>
+<strong>Sürüm</strong> · v1.0.0<br>
+<strong>Ortam</strong> · Cursor IDE + Agent Mode
 </p>
+
+<p><strong>Ne sağlar?</strong></p>
+<ul>
+<li><strong>YAPILACAKLAR (F0–F8)</strong> — Plan onaylanmadan kod üretilmez.</li>
+<li><strong>16 departman ajanı</strong> — CPO, Baş Mimar, Android, güvenlik, OEM, Executive OS.</li>
+<li><strong>33 katman</strong> — 360 bileşenlik denetim çerçevesi.</li>
+<li><strong>10 modüllü iskelet</strong> — Compose, Clean Architecture, billing, FCM, güvenlik.</li>
+<li><strong>Halüsinasyon sıfır</strong> — CI, pre-commit ve audit scriptleri zorunlu.</li>
+</ul>
+
+<p><strong>Hızlı başlangıç:</strong> Template → <code>./scripts/first-setup.sh</code> → Cursor'da <code>/baslat</code></p>
+
+</td>
+<td width="50%" valign="top">
+
+<h3 align="left">English</h3>
+
+<p><strong>Ulas Autonomous Android APP Factory</strong> is a <strong>GitHub template factory repository</strong> built to ship Android apps under the same engineering discipline—every time.</p>
+
+<p>This repo is not an APK. <strong>Standards, governance, the Gradle scaffold, and Cursor agent rules</strong> live here; application code is transferred via <code>init-new-app.sh</code> or <code>sync-standards.sh</code>.</p>
+
+<p>
+<strong>Author</strong> · <a href="docs/AUTHOR.md">Ulaş Kaşıkcı</a><br>
+<strong>License</strong> · <a href="LICENSE">MIT</a><br>
+<strong>Version</strong> · v1.0.0<br>
+<strong>Runtime</strong> · Cursor IDE + Agent Mode
+</p>
+
+<p><strong>What you get</strong></p>
+<ul>
+<li><strong>YAPILACAKLAR (F0–F8)</strong> — No code before an approved phase plan.</li>
+<li><strong>16 department agents</strong> — CPO, Chief Architect, Android, security, OEM, Executive OS.</li>
+<li><strong>33 layers</strong> — 360-component governance framework.</li>
+<li><strong>10-module scaffold</strong> — Compose, Clean Architecture, billing, FCM, security.</li>
+<li><strong>Zero-hallucination protocol</strong> — CI, pre-commit, and audit scripts enforced.</li>
+</ul>
+
+<p><strong>Quick start:</strong> Template → <code>./scripts/first-setup.sh</code> → <code>/baslat</code> in Cursor</p>
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+
+| Kalite kapısı | Komut | Sonuç |
+|:---:|:---|:---:|
+| Fabrika sağlığı | `./scripts/factory-health.sh` | 100 / 100 |
+| Bileşik denetim | `./scripts/factory-quality-gate.sh` | CI + pre-commit |
+| Smoke denetimi | `test/run-factory-audit.sh` | 32 kontrol |
+
+<sub>Designed and maintained by <strong><a href="docs/AUTHOR.md">Ulaş Kaşıkcı</a></strong> · Android factory template · Cursor + Executive OS</sub>
+
+</div>
 
 ---
 
 ## İçindekiler / Table of Contents
 
 | Türkçe | English |
-|------------|-------------|
-| [Sistem Özeti](#-türkçe--sistem-özeti) | [System Overview](#-english--system-overview) |
+|--------|---------|
+| [Sistem Özeti](#sistem-özeti) | [System Overview](#system-overview-en) |
 | [Ne Sunar?](#ne-sunar) | [What It Delivers](#what-it-delivers) |
-| [Mimari Akış](#mimari-akış) | [Architecture Flow](#architecture-flow) |
+| [Mimari Akış](#mimari-akış--architecture-flow) | [Architecture Flow](#mimari-akış--architecture-flow) |
 | [Adım Adım Kurulum](#adım-adım-kurulum-türkçe) | [Step-by-Step Setup](#step-by-step-setup-english) |
-| [Repo Haritası](#repo-haritası) | [Repository Map](#repository-map) |
-| [YAPILACAKLAR F0–F8](#yapilacaklar-f0f8) | [YAPILACAKLAR Phases](#yapilacaklar-phases-f0f8) |
-| [Ajanlar & Executive OS](#ajanlar--executive-os) | [Agents & Executive OS](#agents--executive-os) |
-| [Android İskeleti](#android-i̇skeleti-10-modül) | [Android Scaffold](#android-scaffold-10-modules) |
-| [Doğrulama & Kalite](#doğrulama--kalite-kapısı) | [Validation & Quality Gate](#validation--quality-gate) |
-| [Senaryolar](#kullanım-senaryoları) | [Usage Scenarios](#usage-scenarios) |
-| [Belge Dizini](#belge-dizini) | [Documentation Index](#documentation-index) |
-| [Neden Cursor?](#-türkçe--neden-cursor) | [Why Cursor?](#-english--why-cursor) |
-| [Cursor'da Nasıl Çalışır?](#cursor-entegrasyonu-nasıl-işler) | [How It Works in Cursor](#how-it-works-in-cursor) |
-| [Sana Ne Katacak?](#sana-ne-katacak--what-you-gain) | [What You Gain](#sana-ne-katacak--what-you-gain) |
+| [Repo Haritası](#repo-haritası--repository-map) | [Repository Map](#repo-haritası--repository-map) |
+| [YAPILACAKLAR F0–F8](#yapilacaklar-f0f8--yapilacaklar-phases-f0f8) | [YAPILACAKLAR Phases](#yapilacaklar-f0f8--yapilacaklar-phases-f0f8) |
+| [Ajanlar & Executive OS](#ajanlar--executive-os--agents--executive-os) | [Agents & Executive OS](#ajanlar--executive-os--agents--executive-os) |
+| [Android İskeleti](#android-i̇skeleti-10-modül--android-scaffold-10-modules) | [Android Scaffold](#android-i̇skeleti-10-modül--android-scaffold-10-modules) |
+| [Doğrulama & Kalite](#doğrulama--kalite-kapısı--validation--quality-gate) | [Validation & Quality Gate](#doğrulama--kalite-kapısı--validation--quality-gate) |
+| [Senaryolar](#kullanım-senaryoları--usage-scenarios) | [Usage Scenarios](#kullanım-senaryoları--usage-scenarios) |
+| [Belge Dizini](#belge-dizini--documentation-index) | [Documentation Index](#belge-dizini--documentation-index) |
+| [Neden Cursor?](#neden-cursor) | [Why Cursor?](#why-cursor-en) |
+| [Cursor entegrasyonu](#cursor-entegrasyonu) | [How It Works in Cursor](#cursor-entegrasyonu) |
+| [Ne kazandırır?](#ne-kazandırır) | [What You Gain](#ne-kazandırır) |
 
 ---
 
@@ -61,7 +148,7 @@ Fabrika Cursor Agent kurallarına göre çalışır; düz sohbet LLM'i ile aynı
 
 ---
 
-## Why Cursor? (EN)
+## Why Cursor? (EN) {#why-cursor-en}
 
 Same factory; English labels in tables below. Expects Cursor Agent rules—not a generic chat session.
 
@@ -267,7 +354,7 @@ Tüm süreç **halüsinasyon sıfır** protokolü ve **YAPILACAKLAR.md** faz kap
 
 ---
 
-## System Overview (EN)
+## System Overview (EN) {#system-overview-en}
 
 **Ulas Autonomous Android APP Factory** is a GitHub template for building Android apps with the same standards, Cursor agent rules, and governance on every project.
 
