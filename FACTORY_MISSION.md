@@ -19,6 +19,18 @@ CEO seviyesinde tek soru:
 
 > **Factory kullanılarak ilk gelir ne zaman geliyor?**
 
+## Success criteria (production evidence)
+
+Freeze lifts when **real products** prove the chain — not when repo health hits 100/100:
+
+| # | Criterion | Kanıt |
+|---|-----------|--------|
+| 1 | Released product | Play Store production track |
+| 2 | Active analytics pipeline | AID Sprint P ACTIVE |
+| 3 | Real user cohort | Analytics / Play Console |
+| 4 | Recorded outcome | `runtime/factory/outcomes/app_outcomes.json` |
+| 5 | Revenue event | MRR or first payment in outcomes |
+
 ---
 
 ## Doğru metrikler (dış)
@@ -58,4 +70,4 @@ Factory → sync-standards → Governance → AID → Release → User → Reven
 
 Bu zincir **hedef projede** kanıtlanır — fabrika şablonunda örnek uygulama adı taşınmaz.
 
-Detay: [`factory/outcomes/README.md`](factory/outcomes/README.md) · [`docs/FACTORY_FREEZE.md`](docs/FACTORY_FREEZE.md)
+Detay: [`factory/outcomes/README.md`](factory/outcomes/README.md) · [`docs/FACTORY_FREEZE.md`](docs/FACTORY_FREEZE.md) · [`docs/FACTORY_UPGRADE_STRATEGY.md`](docs/FACTORY_UPGRADE_STRATEGY.md) *(backlog)*

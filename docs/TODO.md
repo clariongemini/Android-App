@@ -1,8 +1,31 @@
 # TODO — Fabrika reposu
 
-**Yazar:** Ulaş Kaşıkcı
+**Yazar:** Ulaş Kaşıkcı  
+**Repo:** FROZEN · MAINTENANCE · Validate through products
 
-## Yayın öncesi
+## Aktif mod (MAINTENANCE)
+
+Yalnızca:
+
+- [ ] Bug fix
+- [ ] Dokümantasyon
+- [ ] `sync-standards.sh` iyileştirmeleri
+
+Yasak: V5 · yeni ajan · council · katman · intelligence motoru
+
+## Production evidence (hedef projede — bu repo değil)
+
+- [ ] 1 released product (Play Store)
+- [ ] 1 active AID pipeline
+- [ ] 1 real user cohort
+- [ ] 1 recorded outcome (`record-outcome.py`)
+- [ ] 1 revenue event
+
+## Backlog (freeze sonrası — şimdi uygulanmaz)
+
+- [ ] [`docs/FACTORY_UPGRADE_STRATEGY.md`](FACTORY_UPGRADE_STRATEGY.md) → `migrate-project.sh` *(trigger: v3 app shipped + breaking factory release)*
+
+---
 
 - [ ] GitHub `main` push
 - [ ] MCP: `.cursor/mcp.json` + GitHub PAT + Browser etkin

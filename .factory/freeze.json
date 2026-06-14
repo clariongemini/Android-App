@@ -37,7 +37,14 @@
     "new_intelligence_motors",
     "new_governance_systems"
   ],
-  "unlock_condition": "apps_released >= 3 in runtime/factory/portfolio/apps.json",
+  "success_criteria": [
+    "released_product",
+    "active_analytics_pipeline",
+    "real_user_cohort",
+    "recorded_outcome",
+    "revenue_event"
+  ],
+  "upgrade_strategy_backlog": "docs/FACTORY_UPGRADE_STRATEGY.md",
   "motto": "Build less factory, ship more products.",
   "mission_file": "FACTORY_MISSION.md"
 }
