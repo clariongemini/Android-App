@@ -31,11 +31,21 @@ echo "    Hedef  : $TARGET"
 SYNC_ITEMS=(
   ".cursorrules"
   ".cursor"
+  "AGENTS.md"
+  "templates/YAPILACAKLAR.template.md"
+  "governance"
   "docs/00-INDEX.md"
   "docs/TODO.md"
   "docs/CHANGELOG.md"
   "docs/33-LAYER-ARCHITECTURE.md"
+  "docs/33-LAYER-MANIFEST.yaml"
   "docs/BOOTSTRAP.md"
+  "docs/EXECUTIVE_OS.md"
+  "docs/YAPILACAKLAR_SISTEMI.md"
+  "docs/MCP_SETUP.md"
+  "docs/RELEASE_CHECKLIST.md"
+  "docs/FACTORY_SCORECARD.md"
+  "docs/GITHUB_REPO_DESCRIPTION.md"
   "docs/01-VISION"
   "docs/02-ARCHITECTURE"
   "docs/03-STANDARDS"
@@ -69,12 +79,14 @@ cat > "$TARGET/.factory/sync.json" <<EOF
 {
   "factory_root": "$FACTORY_ROOT",
   "synced_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-  "factory_version": "0.3.0"
+  "factory_version": "0.6.0"
 }
 EOF
 
 chmod +x "$TARGET/scripts/"*.sh 2>/dev/null || true
 
 echo ""
+echo "    Executive OS: cd \"$TARGET\" && ./scripts/governance/init-governance.sh"
 echo "==> Senkronizasyon tamamlandı."
 echo "    Hedef projede çalıştır: ./scripts/init-new-app.sh \"AppAdi\" \"com.pkg.app\""
+echo "    veya mevcut projede: ./scripts/governance/init-governance.sh"

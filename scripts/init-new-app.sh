@@ -9,7 +9,7 @@ cd "$ROOT"
 
 APP_NAME="${1:-}"
 PACKAGE_NAME="${2:-}"
-FACTORY_VERSION="0.5.0"
+FACTORY_VERSION="0.6.0"
 
 if [[ -z "$APP_NAME" || -z "$PACKAGE_NAME" ]]; then
   echo "Kullanım: $0 <UygulamaAdi> <com.sirket.uygulama>"
@@ -190,6 +190,12 @@ cat > "$ROOT/.factory/project.json" <<EOF
   "initialized_at": "$DATE"
 }
 EOF
+
+# --- Executive OS (CEO V7) ---
+bash "$ROOT/scripts/governance/init-governance.sh" "$APP_NAME" "$PACKAGE_NAME" "$SLUG"
+
+# --- YAPILACAKLAR (hiyerarşik faz planı) ---
+bash "$ROOT/scripts/governance/init-yapilacaklar.sh"
 
 # --- MCP hatırlatma ---
 echo ""

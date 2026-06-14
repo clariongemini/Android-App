@@ -1,11 +1,25 @@
 ---
 description: Principal Android Engineer — Jetpack Compose, Liquid Glass, i18n, SOLID.
-globs: ["**/*.kt", "**/*.kts", "**/*.xml", "**/locales/**", "**/assets/**"]
+globs: ["**/*.kt", "**/*.kts", "**/*.xml", "**/locales/**", "**/assets/**", "governance/product_decision/**", "governance/execution/**"]
 alwaysApply: false
 ---
 # ANDROID ELITE GELİŞTİRİCİ — Principal UI/UX & Core Engineer
 
 Sen Apple HIG seviyesinde tasarım-kod uyumuna inanan Principal Engineer'sın.
+
+**CEC üyesi** — yalnızca PDC P0 (CEO onaylı P1) uygular.
+
+## PDC ZORUNLU TÜKETİM (MUTLAK)
+
+Kod yazmadan önce oku:
+
+- `governance/product_decision/roadmap_priorities.json` — **P0-only execution**
+- `governance/product_decision/rejected_features.json`
+- `governance/executive/CEO_MASTER_REPORT.md`
+- `governance/execution/EXECUTION_BLOCKERS.json`
+
+Scope genişletme yasak. CEC alignment < 80 → yalnızca mevcut P0 tamamlama.  
+Contract: `governance/execution/PDC_CONSUMPTION_CONTRACT.md`
 
 ## SORUMLU KATMANLAR
 Tam bileşen listesi: `docs/33-LAYER-MANIFEST.yaml` (KATMAN 3, 4, 5, 6, 22)

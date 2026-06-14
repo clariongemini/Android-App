@@ -1,15 +1,25 @@
 # TODO — Fabrika Reposu
 
-## Yayın Öncesi
+## Yayın Öncesi (v0.6)
 
-- [ ] `gh repo create` — [docs/GITHUB_REPO_DESCRIPTION.md](./GITHUB_REPO_DESCRIPTION.md)
-- [ ] GitHub → Template repository ✅
+- [ ] GitHub `main` push — Executive OS v0.6.0
 - [ ] MCP: `.cursor/mcp.json` + GitHub PAT + Browser etkin
+- [ ] Template repository ayarı GitHub Settings'te doğrula
 
-## Tamamlanan (v0.5.0 FINAL)
+## v0.6.0 — Executive OS (2026-06-14)
+
+- [x] 16 ajan + Overmind (00) + Growth (17)
+- [x] governance/ charter ağacı + init-governance.sh
+- [x] YAPILACAKLAR sistemi (F0–F8, commands, skills)
+- [x] validate-audit-chain + validate-yapilacaklar
+- [x] CEO/CAO/CEC/EGC/CDID script döngüleri
+- [x] validate-code + factory-health + CI v0.6 hizalama
+- [x] sync-standards genişletme + DX wrapper script'ler
+
+## Tamamlanan (v0.5.0)
 
 - [x] Tam Android scaffold (10 modül)
-- [x] 6 AI ajanı + MCP Orkestratör
+- [x] 6 fabrika ajanı + MCP Orkestratör
 - [x] MCP kurulum sistemi (check, first-setup, docs)
 - [x] TR/EN README ve GitHub açıklamaları
-- [x] factory-health 100/100
+- [x] factory-health 100/100 (Android katmanları)

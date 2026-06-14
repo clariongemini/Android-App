@@ -1,0 +1,62 @@
+---
+description: Overmind — halüsinasyon sıfır, YAPILACAKLAR zorunlu, hiyerarşik denetim kapısı
+alwaysApply: true
+---
+
+# Overmind — Halüsinasyon Sıfır & YAPILACAKLAR Kapısı
+
+Bu kural **her oturumda otomatik** uygulanır. Mimar halüsinasyon uyarısı yazmasa bile bu protokol geçerlidir.
+
+## Mutlak ön koşul (kod/dosya değişikliği öncesi)
+
+1. **`YAPILACAKLAR.md` oku** — yoksa veya boşsa **önce** `/baslat` akışını uygula; dosyayı oluştur.
+2. **`docs/00-INDEX.md`** + aktif faz satırlarını oku.
+3. **Halüsinasyon sıfır:** Var olmayan dosya, sınıf, API, script veya governance kaydı **uydurma**. Okumadan referans verme.
+4. **Araç zorunluluğu:** Dosya içeriği, grep, glob, terminal — tahmin değil kanıt.
+5. **Tek faz kuralı:** Aynı anda yalnızca **bir** faz `işleniyor` olabilir.
+
+## YAPILACAKLAR.md — bina metaforu
+
+| Faz | Katman | Anlam |
+|-----|--------|-------|
+| F0 | Zemin & temel | Governance, MCP, hafıza, sprint lock |
+| F1 | Kolon & taşıyıcı | CPO vizyon, pazar, monetizasyon |
+| F2 | Kat döşeme | Mimari, modül haritası, bağımlılıklar |
+| F3 | Duvar & tesisat | Android iskelet, core modüller |
+| F4 | Cephe & UI | Compose, i18n, Liquid Glass |
+| F5 | Elektrik & güvenlik | Denetim, güvenlik, OEM |
+| F6 | Ölçüm & analitik | AID Sprint P, analytics |
+| F7 | İç mekan & detay | Feature WP'ler, ince işçilik |
+| F8 | Anahtar teslim | CAO + CEO + EGC denetimi, release gate |
+
+Durum ibareleri (satır sonunda veya tabloda): **`bekliyor`** · **`işleniyor`** · **`tamamlandı`**
+
+## Faz çalıştırma protokolü
+
+Her görev satırında: **Ajan** · **L1 üst denetim** · **Kabul kriteri**
+
+1. Fazı `işleniyor` yap → `YAPILACAKLAR.md` güncelle.
+2. İlgili `.cursor/rules/XX-*.mdc` ajanını uygula.
+3. İş bitince **L1 ajan/subagent** ile doğrula (`phase-verifier`, departman L1).
+4. Satırı `tamamlandı` yap; sonraki fazın ilk satırını `işleniyor` yap.
+5. **Keşif kuralı:** Uygulama sırasında eksik/güncelleme gerekiyorsa aynı faza veya uygun üst faza **`[EK-YYYYMMDD]`** ile yeni madde ekle; atlama.
+
+## Hiyerarşik denetim (tek onay yasak)
+
+- Zincir: `governance/executive/HIERARCHICAL_AUDIT_CHAIN.md`
+- Faz tamamlanması ≠ proje tamamlandı; F8'de CAO + CEO + approval gate zorunlu.
+
+## Yasaklar
+
+- YAPILACAKLAR olmadan kod üretmek
+- Tamamlanmamış üst fazda alt fazı `tamamlandı` saymak
+- Tek ajanın kendi işini nihai onaylaması
+- `docs/TODO.md` ile `YAPILACAKLAR.md` çelişkisi — çelişkide YAPILACAKLAR öncelikli, TODO senkronize edilir
+
+## Komutlar & beceriler
+
+- `/baslat` — prompt → YAPILACAKLAR oluştur, F0 başlat
+- `/devam-et` — aktif fazdan devam
+- `/denetle` — hiyerarşik denetim
+- `/faz-durumu` — özet
+- Skill: `.cursor/skills/yapilacaklar-planner/`, `yapilacaklar-executor/`, `zero-hallucination/`

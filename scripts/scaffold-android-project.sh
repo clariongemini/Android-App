@@ -54,7 +54,7 @@ print(f"  Compose Liquid Glass tema hazır")
 print(f"  OEM, Billing, FCM, Security şablonları dahil")
 PYEOF
 
+bash "$ROOT/scripts/bootstrap-gradle-wrapper.sh" "$ROOT"
 chmod +x "$ROOT/gradlew" 2>/dev/null || true
 echo "==> Scaffold tamamlandı."
-echo "    Sonraki: Android Studio ile aç → Gradle sync"
-echo "    veya: gradle wrapper && ./gradlew assembleDebug"
+echo "    Sonraki: ./gradlew assembleDebug (JDK 17+ gerekir)"

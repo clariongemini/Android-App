@@ -23,6 +23,10 @@ REQUIRED=(
   "app/src/main/java/{{PACKAGE_PATH}}/push/AppFirebaseMessagingService.kt"
   ".maestro/flows/smoke.yaml"
   ".github/workflows/android-build.yml"
+  "gradlew"
+  "gradlew.bat"
+  "gradle/wrapper/gradle-wrapper.jar"
+  "gradle/wrapper/gradle-wrapper.properties"
 )
 
 for f in "${REQUIRED[@]}"; do
@@ -45,5 +49,7 @@ if [[ $ERRORS -gt 0 ]]; then
   echo "==> Scaffold denetimi BAŞARISIZ ($ERRORS)"
   exit 1
 fi
+
+bash "$ROOT/scripts/validate-android-template.sh"
 
 echo "==> Android scaffold şablonu eksiksiz ($((${#REQUIRED[@]})) kritik dosya)."

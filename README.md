@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  33 Layers · 360 Components · 6 AI Agents · 10 Gradle Modules · MCP-Powered
+  33 Layers · 360 Components · Executive OS · 16 AI Agents · 10 Gradle Modules · MCP-Powered
 </p>
 
 ---
@@ -22,7 +22,8 @@
 | Katman | İçerik |
 |--------|--------|
 | **Overmind** | `.cursorrules` — merkezi koordinasyon, halüsinasyon sıfır protokolü |
-| **6 AI Ajanı** | CPO, Mimar, Android Elite, Denetçi, OEM Denetçi, MCP Orkestratör |
+| **Executive OS** | CEO V7 — hiyerarşik denetim, tek ajan onayı yasak |
+| **16 AI Ajanı** | Factory 6 + CEO · CAO · CEC · EGC · CDID · AID · Intelligence |
 | **33 Katman** | 360 bileşen — vizyondan kusursuz deneyime (`docs/33-LAYER-ARCHITECTURE.md`) |
 | **13 Standart** | Liquid Glass, i18n, Security, Privacy, OEM, Billing, FCM… |
 | **10 Modül** | app + 7 core + 3 feature — Clean Architecture + MVVM |
@@ -33,6 +34,7 @@
 ```bash
 ./scripts/first-setup.sh          # MCP + sağlık kontrolü
 ./scripts/init-new-app.sh "App" "com.sirket.app"
+# Cursor: /baslat + ürün promptu → YAPILACAKLAR.md
 ```
 
 Cursor'da MCP: `docs/MCP_SETUP.md` — **P0: Browser + GitHub**
@@ -54,7 +56,8 @@ Cursor'da MCP: `docs/MCP_SETUP.md` — **P0: Browser + GitHub**
 | Layer | Content |
 |-------|---------|
 | **Overmind** | `.cursorrules` — central coordination, zero-hallucination protocol |
-| **6 AI Agents** | CPO, Architect, Android Elite, Auditor, OEM Auditor, MCP Orchestrator |
+| **Executive OS** | CEO V7 — hierarchical audit, single-agent approval forbidden |
+| **16 AI Agents** | Factory 6 + CEO · CAO · CEC · EGC · CDID · AID · Intelligence |
 | **33 Layers** | 360 components — vision to flawless experience |
 | **13 Standards** | Liquid Glass, i18n, Security, Privacy, OEM, Billing, FCM… |
 | **10 Modules** | app + 7 core + 3 feature — Clean Architecture + MVVM |
@@ -65,29 +68,28 @@ Cursor'da MCP: `docs/MCP_SETUP.md` — **P0: Browser + GitHub**
 ```bash
 ./scripts/first-setup.sh
 ./scripts/init-new-app.sh "MyApp" "com.company.myapp"
+# Cursor: /baslat + product prompt → YAPILACAKLAR.md
 ```
 
 MCP guide: `docs/MCP_SETUP.md` — **P0: Browser + GitHub**
+
+### One Prompt
+
+> *"Build the app according to 33-layer standards."*
 
 ---
 
 ## Agents / Ajanlar
 
-| Agent | Role |
-|-------|------|
-| CPO | Market, Blue Ocean, monetization |
-| Architect | Clean Architecture, offline-first |
-| Android Elite | Compose, Liquid Glass, i18n |
-| Auditor | Security, performance, QA |
-| OEM Auditor | Samsung, MIUI, OPPO ROM |
-| MCP Orchestrator | MCP setup verification |
+Factory + Executive OS — [AGENTS.md](AGENTS.md) · [docs/EXECUTIVE_OS.md](docs/EXECUTIVE_OS.md) · [docs/YAPILACAKLAR_SISTEMI.md](docs/YAPILACAKLAR_SISTEMI.md)
 
-[AGENTS.md](AGENTS.md)
+**Komutlar:** `/baslat` · `/devam-et` · `/denetle` · `/faz-durumu`
 
 ## Health Score / Sağlık Puanı
 
 ```bash
-./scripts/factory-health.sh   # Target: 100/100
+./scripts/factory-health.sh        # Target: 100/100
+./scripts/factory-quality-gate.sh  # Tüm doğrulamalar + bileşik kapı
 ```
 
 [docs/FACTORY_SCORECARD.md](docs/FACTORY_SCORECARD.md)
@@ -96,4 +98,4 @@ MCP guide: `docs/MCP_SETUP.md` — **P0: Browser + GitHub**
 
 MIT — [LICENSE](LICENSE)
 
-**Version:** v0.5.0-publish-ready
+**Version:** v0.6.0-publish-ready · Hierarchical audit · 16 agents

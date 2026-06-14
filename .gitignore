@@ -33,9 +33,41 @@ secrets.properties
 # OS
 Thumbs.db
 
-# Factory runtime (proje bazlı — init-new-app.sh sonrası oluşur)
+# Factory runtime (proje bazlı — init-new-app.sh / CEO cycle sonrası oluşur)
 .factory/project.json
 .factory/sync.json
+governance/project.config.json
+governance/executive/SPRINT_LOCK.json
+governance/executive/APPROVAL_QUEUE.md
+governance/product_decision/roadmap_priorities.json
+governance/product_decision/rejected_features.json
+governance/product_decision/decision_log.json
+governance/product_decision/evidence_links.json
+governance/product_decision/feature_ranking.json
+governance/product_decision/priority_matrix.json
+governance/product_decision/quarterly_decisions.json
+governance/reality/PRODUCT_REALITY_SCORE.json
+governance/reality/*.json
+!governance/reality/NO_NEW_P0_RULE.json
+governance/execution/*.json
+governance/cao/*.json
+governance/egc/*.json
+governance/cdid/GENERATED_WORK_PACKAGES.json
+governance/memory/*.json
+governance/analytics/SPRINT_P_ACTIVATION_GATE.json
+governance/analytics/SPRINT_P_EVENT_CATALOG.json
+governance/analytics/SPRINT_P_SCHEMA.json
+governance/analytics/output/
+governance/blue_ocean/project_index.json
+governance/market/competitor_catalog.json
+governance/market/demand_intelligence_catalog.json
+governance/market/forum_query_catalog.json
+governance/market/USER_INTENT_SIGNALS.json
+governance/market/PLAY_STORE_BENCHMARKS.json
+governance/linguistic/LOCALE_MARKET_REGISTRY.json
+governance/linguistic/exercise_scope_targets.json
+governance/linguistic/output_catalog.json
+governance/trends/*.json
 docs/01-VISION/PRODUCT_BRIEF.md
 docs/01-VISION/MARKET_ANALYSIS.md
 docs/01-VISION/MONETIZATION.md

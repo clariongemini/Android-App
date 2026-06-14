@@ -38,13 +38,22 @@ check_server() {
   local id="$1"
   local priority="$2"
   local label="$3"
+  local matched=false
 
   if [[ "$id" == "cursor-ide-browser" ]]; then
-  echo "  ✓ [P0] cursor-ide-browser — Cursor built-in (Settings → MCP'de etkinleştir)"
+    echo "  ✓ [P0] cursor-ide-browser — Cursor built-in (Settings → MCP'de etkinleştir)"
     return 0
   fi
 
-  if [[ -n "$config_content" ]] && echo "$config_content" | grep -qi "$id"; then
+  if [[ -n "$config_content" ]]; then
+    if [[ "$id" == "github" ]]; then
+      echo "$config_content" | grep -qiE '"github"|server-github|GitHub' && matched=true
+    elif echo "$config_content" | grep -qi "$id"; then
+      matched=true
+    fi
+  fi
+
+  if [[ "$matched" == true ]]; then
     echo "  ✓ [$priority] $label — yapılandırılmış"
     return 0
   fi

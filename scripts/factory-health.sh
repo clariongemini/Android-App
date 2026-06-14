@@ -5,6 +5,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 check_file() { [[ -f "$ROOT/$1" ]]; }
+check_exec() { [[ -x "$ROOT/$1" ]]; }
 
 TOTAL=0
 
@@ -19,19 +20,35 @@ report() {
 }
 
 echo "╔══════════════════════════════════════════════════════════╗"
-echo "║  Ulas Autonomous Android APP Factory — KUSURSUZLUK v0.5  ║"
+echo "║  Ulas Autonomous Android APP Factory — KUSURSUZLUK v0.6  ║"
 echo "╚══════════════════════════════════════════════════════════╝"
 echo ""
 
-# 1. AI Orkestrasyon & Vizyon
+# 1. AI Orkestrasyon & Executive OS
 c=0
-for f in .cursorrules AGENTS.md docs/33-LAYER-MANIFEST.yaml docs/33-LAYER-ARCHITECTURE.md docs/BOOTSTRAP.md; do
+for f in .cursorrules AGENTS.md docs/33-LAYER-MANIFEST.yaml docs/33-LAYER-ARCHITECTURE.md \
+         docs/BOOTSTRAP.md docs/EXECUTIVE_OS.md docs/YAPILACAKLAR_SISTEMI.md; do
   check_file "$f" && c=$((c + 1))
 done
-for a in 01-product-cpo 02-architect 03-android-elite 04-auditor-security 05-oem-compat-auditor 06-mcp-orchestrator; do
+for a in 00-overmind-zero-hallucination \
+         01-product-cpo 02-architect 03-android-elite 04-auditor-security \
+         05-oem-compat-auditor 06-mcp-orchestrator 07-linguistic-intelligence \
+         08-curriculum-intelligence 09-product-decision-council 10-mavi-okyanus \
+         11-ceo-agent 12-chief-audit-officer 13-chief-execution-council \
+         14-executive-governance-council 15-chief-delivery-intelligence \
+         16-analytics-intelligence 17-marketing-growth; do
   check_file ".cursor/rules/${a}.mdc" && c=$((c + 1))
 done
-report "AI Orkestrasyon & Vizyon" $c 10
+for g in governance/executive/CEO_OPERATING_SYSTEM.md \
+         governance/executive/HIERARCHICAL_AUDIT_CHAIN.md \
+         governance/executive/AGENT_APPROVAL_PROTOCOL.md \
+         governance/market/DEPARTMENT_CHARTER.md; do
+  check_file "$g" && c=$((c + 1))
+done
+for s in zero-hallucination yapilacaklar-planner yapilacaklar-executor hierarchical-audit; do
+  check_file ".cursor/skills/${s}/SKILL.md" && c=$((c + 1))
+done
+report "AI Orkestrasyon & Executive OS" $c 29
 
 # 2. 33 Katman
 c=0
@@ -39,21 +56,30 @@ bash "$ROOT/scripts/audit-layers.sh" &>/dev/null && c=$((c + 5))
 bash "$ROOT/scripts/audit-layer-components.sh" &>/dev/null && c=$((c + 5))
 report "33 Katman (360 bileşen)" $c 10
 
-# 3. Kullanışlılık
+# 3. Kullanışlılık (DX)
 c=0
-for s in init-new-app sync-standards scaffold-android-project install-git-hooks factory-health first-setup check-mcp; do
-  [[ -x "$ROOT/scripts/${s}.sh" ]] && c=$((c + 1))
+for s in init-new-app sync-standards scaffold-android-project install-git-hooks factory-health \
+         first-setup check-mcp init-governance run-ceo-cycle agent-approval-gate; do
+  check_exec "scripts/${s}.sh" && c=$((c + 1))
 done
 check_file ".cursor/mcp.required.json" && c=$((c + 1))
 check_file "docs/MCP_SETUP.md" && c=$((c + 1))
-check_file ".cursor/rules/06-mcp-orchestrator.mdc" && c=$((c + 1))
-report "Kullanışlılık (DX)" $c 10
+check_exec "scripts/governance/init-governance.sh" && c=$((c + 1))
+check_exec "scripts/ceo/run_ceo_cycle.sh" && c=$((c + 1))
+check_exec "scripts/bootstrap-gradle-wrapper.sh" && c=$((c + 1))
+check_exec "scripts/setup-mcp.sh" && c=$((c + 1))
+bash "$ROOT/scripts/validate-android-template.sh" &>/dev/null && c=$((c + 1))
+bash "$ROOT/scripts/governance/validate-factory-governance.sh" &>/dev/null && c=$((c + 1))
+report "Kullanışlılık (DX)" $c 17
 
 # 4. Kod Tasarımı
 c=0
 check_file "docs/02-ARCHITECTURE/ANDROID_STRUCTURE.md" && c=$((c + 2))
 check_file "templates/architecture/MODULE_MAP.template.md" && c=$((c + 2))
-bash "$ROOT/scripts/audit-android-scaffold.sh" &>/dev/null && c=$((c + 6))
+check_file "templates/android/project/settings.gradle.kts" && c=$((c + 2))
+bash "$ROOT/scripts/audit-android-scaffold.sh" &>/dev/null && c=$((c + 2))
+check_file "governance/dependency-rules.json" && c=$((c + 1))
+check_file "templates/governance/project.config.template.json" && c=$((c + 1))
 report "Kod Tasarımı / Mimari" $c 10
 
 # 5. UI / Compose
@@ -98,14 +124,22 @@ check_file "templates/android/project/feature/premium/src/main/java/{{PACKAGE_PA
 check_file "templates/android/project/core/security/src/main/java/{{PACKAGE_PATH}}/core/security/PlayIntegrityChecker.kt" && c=$((c + 2))
 report "Monetizasyon & Integrity" $c 10
 
-# 10. Test & CI
+# 10. Test, CI & Governance doğrulama
 c=0
-check_file "docs/03-STANDARDS/TESTING.md" && c=$((c + 2))
-check_file "templates/android/project/.maestro/flows/smoke.yaml" && c=$((c + 3))
-check_file "templates/android/project/.github/workflows/android-build.yml" && c=$((c + 2))
-check_file ".github/workflows/validate.yml" && c=$((c + 2))
+check_file "docs/03-STANDARDS/TESTING.md" && c=$((c + 1))
+check_file "templates/android/project/.maestro/flows/smoke.yaml" && c=$((c + 2))
+check_file "templates/android/project/.github/workflows/android-build.yml" && c=$((c + 1))
+check_file ".github/workflows/validate.yml" && c=$((c + 1))
 bash "$ROOT/scripts/audit-android-scaffold.sh" &>/dev/null && c=$((c + 1))
-report "Test & CI/CD" $c 10
+check_file "scripts/governance/validate-audit-chain.py" && c=$((c + 1))
+check_file "scripts/governance/validate-yapilacaklar.py" && c=$((c + 1))
+python3 "$ROOT/scripts/governance/validate-audit-chain.py" &>/dev/null && c=$((c + 1))
+if [[ -f "$ROOT/YAPILACAKLAR.md" ]]; then
+  python3 "$ROOT/scripts/governance/validate-yapilacaklar.py" &>/dev/null && c=$((c + 1))
+else
+  check_file "templates/YAPILACAKLAR.template.md" && c=$((c + 1))
+fi
+report "Test & CI/CD & Governance" $c 10
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -114,8 +148,12 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 
 if [[ $TOTAL -eq 100 ]]; then
   echo "  Durum: ✅ KUSURSUZ — Tüm kategoriler tam puan."
+elif [[ $TOTAL -ge 90 ]]; then
+  echo "  Durum: 🟢 Mükemmel — küçük iyileştirme alanı var."
+elif [[ $TOTAL -ge 75 ]]; then
+  echo "  Durum: 🟡 İyi — belirgin eksikler mevcut."
 else
-  echo "  Durum: Eksik kategori var — yukarıdaki tabloya bakın."
+  echo "  Durum: 🔴 Eksik kategori var — yukarıdaki tabloya bakın."
 fi
 
 exit 0

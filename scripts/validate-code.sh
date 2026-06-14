@@ -6,25 +6,68 @@ cd "$ROOT"
 
 ERRORS=0
 
-echo "==> Otonom Holding — Kod Doğrulama"
+echo "==> Otonom Holding — Kod Doğrulama (v0.6)"
 
 REQUIRED_FILES=(
   ".cursorrules"
   "README.md"
   "LICENSE"
   ".gitignore"
+  "AGENTS.md"
+  "templates/YAPILACAKLAR.template.md"
+  ".cursor/rules/00-overmind-zero-hallucination.mdc"
   ".cursor/rules/01-product-cpo.mdc"
   ".cursor/rules/02-architect.mdc"
   ".cursor/rules/03-android-elite.mdc"
   ".cursor/rules/04-auditor-security.mdc"
   ".cursor/rules/05-oem-compat-auditor.mdc"
   ".cursor/rules/06-mcp-orchestrator.mdc"
+  ".cursor/rules/07-linguistic-intelligence.mdc"
+  ".cursor/rules/08-curriculum-intelligence.mdc"
+  ".cursor/rules/09-product-decision-council.mdc"
+  ".cursor/rules/10-mavi-okyanus.mdc"
+  ".cursor/rules/11-ceo-agent.mdc"
+  ".cursor/rules/12-chief-audit-officer.mdc"
+  ".cursor/rules/13-chief-execution-council.mdc"
+  ".cursor/rules/14-executive-governance-council.mdc"
+  ".cursor/rules/15-chief-delivery-intelligence.mdc"
+  ".cursor/rules/16-analytics-intelligence.mdc"
+  ".cursor/rules/17-marketing-growth.mdc"
   ".cursor/mcp.required.json"
   ".cursor/mcp.json.example"
+  ".cursor/skills/zero-hallucination/SKILL.md"
+  ".cursor/skills/yapilacaklar-planner/SKILL.md"
+  ".cursor/skills/yapilacaklar-executor/SKILL.md"
+  ".cursor/skills/hierarchical-audit/SKILL.md"
+  ".cursor/commands/baslat.md"
+  ".cursor/commands/devam-et.md"
+  ".cursor/commands/denetle.md"
   "docs/MCP_SETUP.md"
   "docs/GITHUB_REPO_DESCRIPTION.md"
+  "docs/EXECUTIVE_OS.md"
+  "docs/YAPILACAKLAR_SISTEMI.md"
   "scripts/first-setup.sh"
   "scripts/check-mcp.sh"
+  "scripts/run-ceo-cycle.sh"
+  "scripts/init-governance.sh"
+  "scripts/agent-approval-gate.sh"
+  "scripts/governance/init-governance.sh"
+  "scripts/governance/validate-audit-chain.py"
+  "scripts/governance/validate-yapilacaklar.py"
+  "scripts/ceo/run_ceo_cycle.sh"
+  "governance/executive/CEO_OPERATING_SYSTEM.md"
+  "governance/executive/HIERARCHICAL_AUDIT_CHAIN.md"
+  "governance/executive/AGENT_APPROVAL_PROTOCOL.md"
+  "governance/market/DEPARTMENT_CHARTER.md"
+  "scripts/bootstrap-gradle-wrapper.sh"
+  "scripts/validate-android-template.sh"
+  "scripts/setup-mcp.sh"
+  "scripts/factory-quality-gate.sh"
+  "scripts/governance/validate-factory-governance.sh"
+  "governance/FACTORY_REPO_POLICY.md"
+  "governance/README.md"
+  "templates/governance/SPRINT_LOCK.template.json"
+  "templates/governance/APPROVAL_QUEUE.template.md"
   "docs/03-STANDARDS/OEM_COMPATIBILITY.md"
   "docs/03-STANDARDS/OEM_MATRIX.yaml"
   "docs/03-STANDARDS/SECURITY.md"
@@ -32,7 +75,6 @@ REQUIRED_FILES=(
   "docs/03-STANDARDS/BACKGROUND_PROCESSING.md"
   "docs/03-STANDARDS/MONETIZATION_TECH.md"
   "docs/RELEASE_CHECKLIST.md"
-  "AGENTS.md"
   "scripts/factory-health.sh"
   "scripts/audit-security.sh"
   "scripts/install-git-hooks.sh"
@@ -70,6 +112,20 @@ for file in "${REQUIRED_FILES[@]}"; do
     ERRORS=$((ERRORS + 1))
   fi
 done
+
+# Wrapper scripts must be executable
+for script in run-ceo-cycle init-governance agent-approval-gate; do
+  if [[ ! -x "$ROOT/scripts/${script}.sh" ]]; then
+    echo "HATA: Çalıştırılabilir değil — scripts/${script}.sh"
+    ERRORS=$((ERRORS + 1))
+  fi
+done
+
+# No duplicate 05-marketing (renamed to 17)
+if [[ -f "$ROOT/.cursor/rules/05-marketing-growth.mdc" ]]; then
+  echo "HATA: Eski Growth kuralı — 05-marketing-growth.mdc (17 olmalı)"
+  ERRORS=$((ERRORS + 1))
+fi
 
 LEGACY_FILES=(
   ".cursor/rules/01-architect.mdc"

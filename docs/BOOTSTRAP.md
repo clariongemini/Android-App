@@ -25,11 +25,14 @@ Bu belge, Autonomous App Factory'yi yeni bir Android projesine nasıl uygulayaca
 5. Cursor chat'te:
 
 ```
+/baslat
 Bu projeyi 33 katman standartlarına göre geliştir.
 Uygulama: [kısa açıklama]
 ```
 
-Overmind `docs/00-INDEX.md` okur, CPO ajanı pazar analizine başlar.
+Overmind önce `YAPILACAKLAR.md` oluşturur (F0–F8), sonra F0'dan başlar — **halüsinasyon uyarısı otomatik**. Detay: `docs/YAPILACAKLAR_SISTEMI.md`
+
+6. Executive OS hazır: `governance/executive/SPRINT_LOCK.json` — P0 AID Sprint P varsayılan
 
 ## Senaryo B: Mevcut Android Projesine Standart Aktarma
 
@@ -45,9 +48,11 @@ $FACTORY_REPO/scripts/sync-standards.sh .
 
 Aktarılan içerik:
 - `.cursorrules`
-- `.cursor/rules/*.mdc`
-- `docs/` (standart belgeler + şablonlar)
-- `scripts/` (denetim araçları)
+- `.cursor/rules/*.mdc` (Factory + Executive OS agents)
+- `governance/` (CEO V7, sprint lock, PDC, CEC, CAO, AID templates)
+- `AGENTS.md`
+- `docs/` (standart belgeler + şablonlar + EXECUTIVE_OS.md)
+- `scripts/` (denetim + governance araçları)
 
 Mevcut `app/` kodunuz korunur. Sadece AI kuralları ve dokümantasyon eklenir.
 
@@ -74,8 +79,16 @@ git submodule update --remote .factory
 | 3 | `docs/02-ARCHITECTURE/MODULE_MAP.md` şablonunu oluşturur |
 | 4 | `docs/TODO.md` sıfırlar ve Faz 0 ekler |
 | 5 | `android/` klasör yapısı referansını oluşturur |
+| 6 | `governance/` Executive OS bootstrap (`init-governance.sh`) |
 
-## Cursor'da Kullanım İpuçları
+## Executive OS
+
+```bash
+./scripts/run-ceo-cycle.sh
+./scripts/agent-approval-gate.sh
+```
+
+Kılavuz: [EXECUTIVE_OS.md](./EXECUTIVE_OS.md)
 
 - **İlk prompt:** Uygulama fikrini verin, kod istemeyin — Overmind önce vizyon belgelerini oluşturur
 - **Devam promptu:** `@docs/00-INDEX.md` ile hafızayı tazeleyin

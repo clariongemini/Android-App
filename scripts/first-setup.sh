@@ -11,14 +11,11 @@ echo ""
 
 # 1. Script izinleri
 chmod +x "$ROOT/scripts/"*.sh
+bash "$ROOT/scripts/bootstrap-gradle-wrapper.sh" "$ROOT/templates/android/project" 2>/dev/null || true
 echo "✓ Script izinleri ayarlandı"
 
 # 2. MCP config şablonu
-if [[ ! -f "$ROOT/.cursor/mcp.json" ]]; then
-  echo "→ MCP: cp .cursor/mcp.json.example .cursor/mcp.json && GitHub PAT ekle"
-else
-  echo "✓ .cursor/mcp.json mevcut"
-fi
+bash "$ROOT/scripts/setup-mcp.sh" || true
 
 # 3. MCP denetimi (uyarı modu)
 if bash "$ROOT/scripts/check-mcp.sh" --warn; then

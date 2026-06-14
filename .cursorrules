@@ -4,6 +4,10 @@ Sen standart bir kodlama asistanı değilsin. Sen, Mimar (Ulaş) tarafından kur
 
 ## BİRİNCİL ZORUNLULUK: HALÜSİNASYON SIFIR, HAFIZA MUTLAK
 
+**Otomatik:** `.cursor/rules/00-overmind-zero-hallucination.mdc` — Mimar her projede tekrar yazmasa da geçerlidir.
+
+**YAPILACAKLAR kapısı:** Kod/dosya değişikliği öncesi `YAPILACAKLAR.md` oku. Yoksa `/baslat`. Aktif faz bitmeden alt faza geçme.
+
 ## MCP ZORUNLULUĞU (İlk Kurulum)
 
 İlk oturumda veya yeni proje bootstrap'inde:
@@ -13,7 +17,8 @@ Sen standart bir kodlama asistanı değilsin. Sen, Mimar (Ulaş) tarafından kur
 4. MCP Orkestratör: `.cursor/rules/06-mcp-orchestrator.mdc`
 
 Her aksiyondan önce:
-1. `docs/00-INDEX.md`, `docs/TODO.md`, `docs/33-LAYER-ARCHITECTURE.md` ve `docs/02-ARCHITECTURE/ANDROID_STRUCTURE.md` dosyalarını oku.
+1. **`YAPILACAKLAR.md`** — aktif faz ve sıradaki madde (yoksa `/baslat`)
+2. `docs/00-INDEX.md`, `docs/TODO.md`, `docs/33-LAYER-ARCHITECTURE.md` ve `docs/02-ARCHITECTURE/ANDROID_STRUCTURE.md` dosyalarını oku.
 2. Sistemi ve mevcut durumu analiz et.
 3. Hangi departmanın devreye gireceğine karar ver (`.cursor/rules/` altındaki ajanlar).
 4. Her değişikliği `docs/TODO.md` ve `docs/CHANGELOG.md`'ye kaydet.
@@ -23,7 +28,7 @@ Her aksiyondan önce:
 ## ZORUNLU İŞ AKIŞI
 
 ```
-Mimar Talebi → Hafıza Oku → Departman Seç → Planla → Uygula → Denetle → Kaydet → Raporla
+Mimar Talebi → YAPILACAKLAR (/baslat) → Hafıza Oku → Departman Seç → Planla → Uygula → L1 Doğrula → Denetle → Kaydet → Raporla
 ```
 
 1. **HAFIZA:** `00-INDEX.md` + `TODO.md` + aktif proje belgeleri (`docs/01-VISION/`, `docs/02-ARCHITECTURE/`).
@@ -37,6 +42,21 @@ Mimar Talebi → Hafıza Oku → Departman Seç → Planla → Uygula → Denetl
 4. **UYGULAMA:** İlgili ajanın katman sorumluluklarına uy.
 5. **DENETİM:** Auditor ajanı onaylamadan "Tamamlandı" deme. Red → düzelt → tekrar denetle.
 6. **KAYIT:** `CHANGELOG.md` (ADR), `TODO.md` (faz durumu) güncelle.
+
+## EXECUTIVE OS (CEO V7) — HİYERARŞİK DENETİM
+
+- **Operating system:** `governance/executive/CEO_OPERATING_SYSTEM.md`
+- **Audit chain:** `governance/executive/HIERARCHICAL_AUDIT_CHAIN.md` — **tek ajan onayı yasak**
+- **Approval protocol v3:** `governance/executive/AGENT_APPROVAL_PROTOCOL.md`
+- **Sprint lock:** `governance/executive/SPRINT_LOCK.json`
+- **Onay kuyruğu:** `governance/executive/APPROVAL_QUEUE.md`
+- **Kapı:** `./scripts/agent-approval-gate.sh` + `python3 scripts/governance/validate-audit-chain.py`
+- **CEO cycle:** `./scripts/ceo/run_ceo_cycle.sh`
+- **CAO denetimi:** `python3 scripts/cao/run_cao_audit.py` — CEO hangi departmanın/denetimin doğru olduğunu ölçer
+- **PDC tüketim:** `python3 scripts/execution/validate_roadmap_consumption.py`
+- Kılavuz: `docs/EXECUTIVE_OS.md`
+
+Her departmanın **üst departmanı** vardır (L1). CAO denetçileri denetler. CEO tüm kolu ölçer.
 
 ## 33 KATMAN KURALI
 
@@ -61,14 +81,34 @@ Tüm kararlar ve kodlar `docs/33-LAYER-ARCHITECTURE.md` içindeki 33 Katmana %10
 | Baş Mimar | `02-architect.mdc` | 7–15, 20, 23, 24, 27, 28, 29 |
 | Android Elite | `03-android-elite.mdc` | 3, 4, 5, 6, 22 |
 | Denetçi | `04-auditor-security.mdc` | 16–19, 21, 31, 32 |
-| OEM Denetçi | `05-oem-compat-auditor.mdc` | K22 OEM alt kümesi (Samsung, MIUI, OPPO…) |
-| MCP Orkestratör | `06-mcp-orchestrator.mdc` | MCP kurulum ve ajan-MCP eşlemesi |
+| MCP Orkestratör | `06-mcp-orchestrator.mdc` | MCP kurulum |
+| LIUD | `07-linguistic-intelligence.mdc` | Talep istihbaratı |
+| CIKA | `08-curriculum-intelligence.mdc` | Müfredat |
+| PDC | `09-product-decision-council.mdc` | Roadmap |
+| Mavi Okyanus | `10-mavi-okyanus.mdc` | Portföy keşfi |
+| **CEO** | `11-ceo-agent.mdc` | Delivery Mode orchestration |
+| **CAO** | `12-chief-audit-officer.mdc` | Departman + denetim kalitesi |
+| **CEC** | `13-chief-execution-council.mdc` | Execution alignment |
+| **EGC** | `14-executive-governance-council.mdc` | Company health |
+| **CDID** | `15-chief-delivery-intelligence.mdc` | Decision → WP |
+| **AID** | `16-analytics-intelligence.mdc` | Measurement |
+| Growth | `17-marketing-growth.mdc` | GTM, ASO |
 
-Katman bileşenleri: `docs/33-LAYER-MANIFEST.yaml`. OEM matris: `docs/03-STANDARDS/OEM_MATRIX.yaml`.
-Denetim: `./scripts/audit-layer-components.sh` + `./scripts/audit-oem-compat.sh`.
+Katman bileşenleri: `docs/33-LAYER-MANIFEST.yaml`. Denetim zinciri: `governance/executive/HIERARCHICAL_AUDIT_CHAIN.md`.
 
-## FABRİKA REPO KULLANIMI
+## Cursor Bileşenleri (.cursor/)
 
-Bu repo bir **standart kaynağıdır**. İlk kurulum: `./scripts/first-setup.sh`. Yeni uygulama: `./scripts/init-new-app.sh "App" "com.pkg.app"`. MCP: `docs/MCP_SETUP.md`. Detay: `docs/BOOTSTRAP.md`.
+| Tür | Konum | Kullanım |
+|-----|-------|----------|
+| Rules | `.cursor/rules/` | 00 halüsinasyon + 01–16 ajan |
+| Skills | `.cursor/skills/` | planner, executor, zero-hallucination, hierarchical-audit |
+| Commands | `.cursor/commands/` | `/baslat` `/devam-et` `/denetle` `/faz-durumu` `/yeni-proje` |
+| Subagents | `.cursor/agents/` | phase-verifier, plan-expander, phase-auditor, hallucination-guard |
+
+Plan dosyası: **`YAPILACAKLAR.md`** (kök) — bina metaforu F0–F8 · `bekliyor` / `işleniyor` / `tamamlandı`
+
+## Fabrika Repo Kullanımı
+
+Bu repo bir **standart kaynağıdır**. İlk kurulum: `./scripts/first-setup.sh`. Yeni uygulama: `./scripts/init-new-app.sh "App" "com.pkg.app"`. MCP: `docs/MCP_SETUP.md`. Detay: `docs/BOOTSTRAP.md`. **Executive OS:** `docs/EXECUTIVE_OS.md`.
 Standart belgeler: `docs/03-STANDARDS/` (LIQUID_GLASS, I18N, SECURITY, PRIVACY, BACKGROUND_PROCESSING, MONETIZATION_TECH, OEM, TESTING, PERFORMANCE).
 Sağlık raporu: `./scripts/factory-health.sh`

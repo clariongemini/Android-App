@@ -1,27 +1,94 @@
 # Ulas Autonomous Android APP Factory — Agent Directory
 
-## 6 Departments / 6 Departman
+> **Portable Executive OS** — Her Android projesine aktarılabilir fabrika paketi.
 
-| # | Agent | File | MCP Tools |
-|---|-------|------|-----------|
-| 1 | Product CPO | `01-product-cpo.mdc` | Browser, Fetch |
-| 2 | Chief Architect | `02-architect.mdc` | GitHub, Docker |
-| 3 | Android Elite | `03-android-elite.mdc` | — |
-| 4 | Security Auditor | `04-auditor-security.mdc` | GitHub |
-| 5 | OEM Auditor | `05-oem-compat-auditor.mdc` | Browser |
-| 6 | MCP Orchestrator | `06-mcp-orchestrator.mdc` | All (setup) |
+---
 
-## First Session Protocol
+## Executive Layer
+
+| Agent | Rule | Denetleyen (L1+) |
+|-------|------|------------------|
+| **CEO V7** | `11-ceo-agent.mdc` | CSGB → EGC |
+| **EGC** | `14-executive-governance-council.mdc` | — |
+| **CSGB** | `governance/csgb/DEPARTMENT_CHARTER.md` | EGC |
+| **CAO** | `12-chief-audit-officer.mdc` | CEO → EGC |
+| **PDC** | `09-product-decision-council.mdc` | CAO → CEO |
+| **CEC** | `13-chief-execution-council.mdc` | CEO → CSGB |
+| **CDID** | `15-chief-delivery-intelligence.mdc` | CEC → CAO |
+
+## Intelligence Division
+
+| Agent | Rule | Denetleyen |
+|-------|------|------------|
+| LIUD | `07-linguistic-intelligence.mdc` | PDC → CAO |
+| CIKA | `08-curriculum-intelligence.mdc` | PDC → CAO |
+| AID | `16-analytics-intelligence.mdc` | CAO → CEO |
+| Mavi Okyanus | `10-mavi-okyanus.mdc` | PDC → CAO |
+| Growth | `17-marketing-growth.mdc` | CPO → CAO |
+
+**Charter-only (cursor rule yok):** Finance, Localization, Clinical, Trends — `governance/FACTORY_REPO_POLICY.md`
+
+## Factory Division
+
+| # | Agent | Rule | L1 | L2 |
+|---|-------|------|----|----|
+| 1 | CPO | `01-product-cpo.mdc` | PDC | CAO |
+| 2 | Architect | `02-architect.mdc` | CEC | CAO |
+| 3 | Android | `03-android-elite.mdc` | Architect | CPO |
+| 4 | Security | `04-auditor-security.mdc` | Architect | CAO |
+| 5 | OEM | `05-oem-compat-auditor.mdc` | Android | Security |
+| 6 | MCP | `06-mcp-orchestrator.mdc` | Architect | Security |
+
+**Tam eşleme:** `governance/executive/HIERARCHICAL_AUDIT_CHAIN.md`
+
+---
+
+## Bootstrap
 
 ```bash
-./scripts/first-setup.sh    # MCP + health
-./scripts/check-mcp.sh      # Verify P0 MCPs
+./scripts/first-setup.sh
+./scripts/init-new-app.sh "MyApp" "com.company.myapp"   # + init-governance + YAPILACAKLAR
+./scripts/ceo/run_ceo_cycle.sh
+python3 scripts/governance/validate-audit-chain.py
+python3 scripts/governance/validate-yapilacaklar.py
+./scripts/agent-approval-gate.sh
 ```
 
-See [docs/MCP_SETUP.md](docs/MCP_SETUP.md)
+## YAPILACAKLAR (zorunlu plan)
 
-## Workflow
+| Dosya | Rol |
+|-------|-----|
+| `YAPILACAKLAR.md` | F0–F8 faz planı · `bekliyor` / `işleniyor` / `tamamlandı` |
+| `docs/YAPILACAKLAR_SISTEMI.md` | Bina metaforu + komutlar |
 
+**Cursor:** `/baslat` → prompt plana yazılır · `/devam-et` → aktif faz · `/denetle` → L1+L2
+
+## Cursor (.cursor/)
+
+| Tür | İçerik |
+|-----|--------|
+| Rules | `00-overmind-zero-hallucination.mdc` + `01`–`16` + `17-marketing-growth` |
+| Skills | `zero-hallucination`, `yapilacaklar-planner`, `yapilacaklar-executor`, `hierarchical-audit` |
+| Commands | `baslat`, `devam-et`, `denetle`, `faz-durumu`, `yeni-proje` |
+| Subagents | `phase-verifier`, `plan-expander`, `phase-auditor`, `hallucination-guard` |
+
+## Governance (canonical)
+
+| Kaynak | Path |
+|--------|------|
+| Operating system | `governance/executive/CEO_OPERATING_SYSTEM.md` |
+| Hierarchical audit | `governance/executive/HIERARCHICAL_AUDIT_CHAIN.md` |
+| Approval protocol v3 | `governance/executive/AGENT_APPROVAL_PROTOCOL.md` |
+| Sprint lock | `governance/executive/SPRINT_LOCK.json` |
+| Roadmap | `governance/product_decision/roadmap_priorities.json` |
+
+## Import to existing project
+
+```bash
+./scripts/sync-standards.sh /path/to/project
+cd /path/to/project && ./scripts/governance/init-governance.sh
 ```
-Mimar → Overmind → MCP Check → CPO → Architect → Android → Auditor → OEM Auditor → Mimar
-```
+
+---
+
+**Not:** Bu repo fabrika şablonudur. Canlı proje verileri (sprint lock, approval queue, CEO raporları) `init-governance.sh` ile **her projede sıfırdan** oluşturulur; başka uygulamanın runtime dosyaları kopyalanmaz.
