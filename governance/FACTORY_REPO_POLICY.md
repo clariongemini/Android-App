@@ -7,10 +7,21 @@ Bu belge **Ulas Autonomous Android APP Factory** reposunda hangi governance dosy
 | Tür | Git'te | Açıklama |
 |-----|--------|----------|
 | **Charter & protokol** | ✅ | `DEPARTMENT_CHARTER.md`, `README.md`, executive MD |
+| **Factory intelligence (V3)** | ✅ | `factory/*/README.md`, `templates/factory/`, `scripts/factory/` |
 | **Şablon kurallar** | ✅ | `dependency-rules.json` (generic package placeholder) |
 | **Governance templates** | ✅ | `templates/governance/*.template.*` |
 | **Runtime JSON/MD** | ❌ | Sprint lock, approval queue, CEO cycle çıktıları |
+| **Factory runtime** | ❌ | `runtime/**` (V3.1 consolidated) |
 | **Proje belgeleri** | ❌ | PRODUCT_BRIEF, MODULE_MAP (init-new-app üretir) |
+
+## Governance vs Factory (V3)
+
+| | `governance/` | `factory/` |
+|---|---------------|------------|
+| Rol | Karar, onay, roadmap | Öğrenme, kanıt, doğruluk, gelir, kıyas |
+| Örnek | `SPRINT_LOCK.json`, PDC roadmap | `runtime/proof/`, `runtime/memory/` |
+
+Detay: [`docs/FACTORY_V3.md`](../docs/FACTORY_V3.md)
 
 ## Runtime dosyalar (gitignore)
 

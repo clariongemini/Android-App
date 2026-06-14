@@ -43,11 +43,19 @@ Thumbs.db
 # Factory — yerel test/ klasörü commit dışı (Stitch lab vb. yerelde)
 test/
 
+# Factory — V3.1 consolidated runtime (proje bazlı; template repo şişmesin)
+/runtime/
+factory/runtime/
+
 docs/AUDIT_REPORT.md
 
 .factory/project.json
 .factory/bootstrap_manifest.json
 .factory/sync.json
+
+# Python
+__pycache__/
+*.py[cod]
 governance/project.config.json
 governance/executive/SPRINT_LOCK.json
 governance/executive/APPROVAL_QUEUE.md

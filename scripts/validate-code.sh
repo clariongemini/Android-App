@@ -11,6 +11,7 @@ echo "==> Kod doğrulama"
 REQUIRED_FILES=(
   ".cursorrules"
   "README.md"
+  "FACTORY_MISSION.md"
   "LICENSE"
   ".gitignore"
   "AGENTS.md"

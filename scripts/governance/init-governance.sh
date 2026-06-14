@@ -10,7 +10,7 @@ APP_NAME="${1:-}"
 PACKAGE_NAME="${2:-}"
 SLUG="${3:-}"
 DATE="$(date +%Y-%m-%d)"
-FACTORY_VERSION="2.1.0-stable"
+FACTORY_VERSION="3.0.0-intelligence-alpha"
 
 if [[ -z "$APP_NAME" || -z "$PACKAGE_NAME" ]]; then
   if [[ -f "$ROOT/.factory/project.json" ]]; then
@@ -60,6 +60,9 @@ fi
 
 # Full generic state (overwrites Konuşma live snapshots if present)
 python3 "$ROOT/scripts/governance/seed-governance-state.py" "$APP_NAME" "$PACKAGE_NAME" "$SLUG"
+
+# V3 Factory Intelligence Layer
+bash "$ROOT/scripts/runtime/init-runtime.sh"
 
 chmod +x "$ROOT/scripts/"*.sh "$ROOT/scripts/ceo/"*.sh 2>/dev/null || true
 python3 "$ROOT/scripts/execution/validate_roadmap_consumption.py" 2>/dev/null || true

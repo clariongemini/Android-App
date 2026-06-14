@@ -8,6 +8,19 @@
 - [ ] MCP: `.cursor/mcp.json` + GitHub PAT + Browser etkin
 - [ ] Template repository ayarı GitHub Settings'te doğrula
 
+## v3.1.0-intelligence-operational (2026-06-14)
+
+- [x] Intelligence operational loop + runtime consolidation
+
+## v4.0.0-productization (plan — intelligence FROZEN)
+
+- [x] `FACTORY_MISSION.md` — quality gate + audit her çalışmada okunur
+- [x] `factory/outcomes/` — Portfolio → Outcome scaffold
+- [x] `factory/portfolio/` registry scaffold + Factory Success KPI
+- [x] `factory/outcomes/` — Portfolio → Outcome (users, retention, MRR, ROI)
+- [ ] İlk 3 app release + outcome validation — Play Store verisi
+- [ ] **Kural:** Yeni intelligence engine eklenmez
+
 ## v2.1.0-stable (2026-06-14)
 
 - [x] negative_constraints + kelime cap 150–200

@@ -29,10 +29,12 @@ check() {
 RESULTS=()
 
 echo "==> Fabrika audit başlıyor..."
+bash "$REPO_ROOT/scripts/factory/print-mission.sh"
 
 check "F0.1" "first-setup.sh mevcut" "$([[ -x "$REPO_ROOT/scripts/first-setup.sh" ]] && echo pass || echo fail)"
 check "F0.2" "init-governance.sh mevcut" "$([[ -x "$REPO_ROOT/scripts/governance/init-governance.sh" ]] && echo pass || echo fail)"
 check "F0.3" "docs/00-INDEX.md" "$([[ -f "$REPO_ROOT/docs/00-INDEX.md" ]] && echo pass || echo fail)"
+check "F0.M" "FACTORY_MISSION.md" "$([[ -f "$REPO_ROOT/FACTORY_MISSION.md" ]] && echo pass || echo fail)"
 check "F0.4" "YAPILACAKLAR.md + validator" \
   "$(python3 "$REPO_ROOT/scripts/governance/validate-yapilacaklar.py" &>/dev/null && echo pass || echo fail)"
 check "F0.5" "validate-audit-chain.py" \
@@ -109,6 +111,17 @@ check "V2.9" "kelime cap 150-200 (.mdc)" \
   "$(grep -q '150–200' "$REASONING" && echo pass || echo fail)"
 check "V2.10" "validate-reasoning-transcript.sh (v2.2)" \
   "$(bash "$REPO_ROOT/scripts/validate-reasoning-transcript.sh" &>/dev/null && echo pass || echo fail)"
+
+check "V3.1" "factory/README.md (Intelligence Layer)" \
+  "$([[ -f "$REPO_ROOT/factory/README.md" ]] && echo pass || echo fail)"
+check "V3.2" "docs/FACTORY_V3.md" \
+  "$([[ -f "$REPO_ROOT/docs/FACTORY_V3.md" ]] && echo pass || echo fail)"
+check "V3.3" "scripts/factory/validate-intelligence.sh" \
+  "$(bash "$REPO_ROOT/scripts/factory/validate-intelligence.sh" &>/dev/null && echo pass || echo fail)"
+check "V3.4" "templates/factory/proof_registry.template.json" \
+  "$([[ -f "$REPO_ROOT/templates/factory/proof_registry.template.json" ]] && echo pass || echo fail)"
+check "V3.5" "AGENTS.md freeze (agents_freeze)" \
+  "$(python3 -c "import json; m=json.load(open('$REPO_ROOT/.factory/meta.json')); exit(0 if m.get('agents_freeze') else 1)" &>/dev/null && echo pass || echo warn)"
 
 check "QG.1" "validate-code.sh" "$(bash "$REPO_ROOT/scripts/validate-code.sh" &>/dev/null && echo pass || echo fail)"
 check "QG.2" "audit-layers.sh" "$(bash "$REPO_ROOT/scripts/audit-layers.sh" &>/dev/null && echo pass || echo fail)"

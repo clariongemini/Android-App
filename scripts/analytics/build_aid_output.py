@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -119,6 +120,13 @@ def main() -> int:
     for name, data in files.items():
         (OUT / name).write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"   ✅ governance/analytics/output/{name}")
+
+    # V3 Money Reality — factory/runtime/revenue (AID owns, no new agent)
+    rev_script = ROOT / "scripts" / "factory" / "build-revenue-snapshot.py"
+    if rev_script.exists():
+        import subprocess
+        subprocess.run([sys.executable, str(rev_script)], cwd=ROOT, check=False)
+
     return 0
 
 

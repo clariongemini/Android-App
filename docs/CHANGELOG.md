@@ -1,5 +1,48 @@
 # CHANGELOG
 
+## [4.0.0-productization] — 2026-06-14 — Portfolio registry (plan)
+
+### Added
+
+- `factory/portfolio/` — apps, scorecard, release_history, revenue_summary, factory_kpi
+- `docs/FACTORY_V4_PRODUCTIZATION.md` — intelligence freeze + 30–60 day validation plan
+- `register-app.py`, `record-release.py`, `build-factory-kpi.py` — Factory Success Health
+- `intelligence_freeze: true` in `.factory/meta.json`
+
+### Policy
+
+- No V3.2+ · No Risk/Forecast/Strategy engines
+- V4 validation: 3 app releases + outcome validation (Play Store)
+
+## [3.1.0-intelligence-operational] — 2026-06-14 — V3.1 operational loop
+
+### Added
+
+- `runtime/` consolidated tree — governance, factory, analytics, telemetry
+- `wp-proof-gate.py` — CDID hook: WP Closed → Proof Required → PROVEN
+- `run-learning-loop.sh` — closed loop WP → Proof → Revenue → Decision → Benchmark
+- Memory `--graph` + `--related` cross-type query
+- `enforce-decision-reviews.py` — mandatory 90-day PDC outcome review
+- Application-scoped revenue (`scope: application`, `app` field)
+- `benchmark/velocity.json` — idea_to_release_days vs industry 64d
+
+## [3.0.0-intelligence-alpha] — 2026-06-14 — Factory Intelligence Layer (V3)
+
+### Added
+
+- `factory/` — öğrenen katman (governance'dan ayrı): proof, memory, decision_accuracy, revenue, benchmark, telemetry
+- `docs/FACTORY_V3.md` — V3 yol haritası, motor önceliği, agents freeze
+- `scripts/factory/` — init-intelligence, record-proof, query-memory, compute-decision-accuracy, build-benchmark, run-intelligence-cycle
+- `templates/factory/*.template.json` — runtime seed şablonları
+- AID hook: `build_aid_output.py` → `factory/runtime/revenue/revenue_snapshot.json`
+- Audit V3.1–V3.5 + quality-gate `validate-intelligence.sh`
+- `.factory/meta.json` — `agents_freeze: true`, `v3_motors`
+
+### Policy
+
+- AGENTS.md **16 ajan freeze** — yeni council/ajan yok; capability factory katmanına gömülür
+- F3 Android iskelet V3 tamamlanana kadar `bekliyor`
+
 ## [2.1.0-stable] — 2026-06-14 — Reasoning zırhı (v2.1)
 
 ### Added

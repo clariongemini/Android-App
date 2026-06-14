@@ -9,11 +9,11 @@
 | Proje | Factory |
 | Package | `com.ulas.factory` |
 | Yazar | [Ulaş Kaşıkcı](docs/AUTHOR.md) |
-| Fabrika sürümü | v2.1.0-stable |
+| Fabrika sürümü | v3.1.0-intelligence-operational |
 | Oluşturulma | 2026-06-14 |
-| Aktif faz | **F3 — Duvar & Tesisat** (F2 tamamlandı) |
+| Aktif faz | **F3 — Duvar & Tesisat** (V3 tamamlandı) |
 | Aktif ajanlar | `03-android-elite`, `02-architect` · manifest: `layer-03.yaml`, `layer-04.yaml`, `layer-05.yaml`, `layer-06.yaml`, `layer-22.yaml` |
-| Kaynak prompt | Fabrika kalite kapısı — Executive OS + 33 katman + Gradle wrapper + governance policy |
+| Kaynak prompt | F3 Android iskelet · V4 productization — gerçek app doğrulama |
 
 ---
 
@@ -59,11 +59,67 @@
 
 ## F3 — Duvar & Tesisat (Android İskelet) · `işleniyor`
 
+> V3 Factory Intelligence tamamlandı — Android iskelet doğrulaması aktif faz.
+
 | # | Görev | Ajan | L1 | Kabul | Durum |
 |---|-------|------|----|-------|-------|
 | F3.1 | Gradle 10 modül iskeleti doğrula | Android Elite | Baş Mimar | build ok | bekliyor |
 | F3.2 | Hilt + Room + Navigation iskelet | Android Elite | Baş Mimar | derleme | bekliyor |
 | F3.3 | i18n `assets/locales/tr.json`, `en.json` boş şablon | Android Elite | CPO | hard-coded yok | bekliyor |
+
+---
+
+## V3 — Factory Intelligence Layer · `tamamlandı`
+
+> Governance karar verir · Factory öğrenir · Yeni ajan yok  
+> Detay: [`docs/FACTORY_V3.md`](docs/FACTORY_V3.md)
+
+| # | Motor | Sahip | Kabul | Durum |
+|---|--------|-------|-------|-------|
+| V3.1 | **Proof Engine** — Feature Proven | CDID | commit+apk+analytics → PROVEN | tamamlandı |
+| V3.2 | **Memory Engine** — query-memory | CDID + CAO | `./query-memory.sh` çalışır | tamamlandı |
+| V3.3 | **Decision Accuracy** — PDC % | PDC → EGC | `pdc_accuracy_pct` hesaplanır | tamamlandı |
+| V3.4 | **Revenue Reality** — AID Money | AID | `revenue_snapshot.json` | tamamlandı |
+| V3.5 | **Benchmark** — Factory/Product/Market | Growth + EGC | 3 katman JSON | tamamlandı |
+| V3.6 | AGENTS.md freeze + meta `agents_freeze` | CEO | 16 ajan sabit | tamamlandı |
+| V3.7 | `init-governance.sh` → `init-intelligence.sh` | CEO | bootstrap hook | tamamlandı |
+| V3.8 | quality-gate + audit V3.* kontrolleri | Denetçi | validate-intelligence pass | tamamlandı |
+
+**V3 çıkış kapısı:** iskelet + scriptler doğrulandı → **V3.1 operational** → F3
+
+---
+
+## V3.1 — Operational Loop · `tamamlandı`
+
+| # | Görev | Sahip | Kabul | Durum |
+|---|--------|-------|-------|-------|
+| V3.1.1 | CDID → `wp-proof-gate.py --sync-cdid` | CDID | proof_gate.json | tamamlandı |
+| V3.1.2 | `run-learning-loop.sh` kapalı döngü | CEO | WP→Proof→Revenue→Decision | tamamlandı |
+| V3.1.3 | Memory cross-type + `--graph` | CDID | FAIL/LESSON/ADR arama | tamamlandı |
+| V3.1.4 | 90-day `enforce-decision-reviews.py` | PDC | OVERDUE → exit 1 | tamamlandı |
+| V3.1.5 | Application revenue (`app` scoped) | AID | scope=application | tamamlandı |
+| V3.1.6 | Velocity benchmark | EGC | idea_to_release_days | tamamlandı |
+| V3.1.7 | `runtime/` consolidation | Overmind | init-runtime.sh | tamamlandı |
+
+---
+
+## V4 — Factory Productization · `bekliyor`
+
+> **Intelligence FROZEN** — yeni engine yok. Tek yüzey: portföy + gerçek app verisi.  
+> Detay: [`docs/FACTORY_V4_PRODUCTIZATION.md`](docs/FACTORY_V4_PRODUCTIZATION.md)
+
+| # | Görev | Sahip | Kabul | Durum |
+|---|--------|-------|-------|-------|
+| V4.0 | Portfolio registry scaffold | CEO | `factory/portfolio/` + seed | tamamlandı |
+| V4.1 | Outcomes layer scaffold | CEO | `factory/outcomes/` + record/build | tamamlandı |
+| V4.2 | İlk app — fabrikadan geçir | Android | register + release + outcomes | bekliyor |
+| V4.3 | İkinci app — portföye ekle | Android | factory_kpi güncel | bekliyor |
+| V4.4 | Üçüncü app — freeze unlock | Android | 3 release + outcomes PROVEN | bekliyor |
+| V4.5 | 30–60 gün Factory Success Health | CEO | validation_status=ACTIVE | bekliyor |
+| V4.5 | Certification + Regression + ROI scaffold | Denetçi | certify + scan-regression | tamamlandı |
+| V4.6 | **FREEZE** until 3 apps released | CEO | `.factory/freeze.json` | tamamlandı |
+
+**V4 kuralı:** Gerçek app verisi olmadan meta-sistem genişlemesi yok. **Build less, ship more.**
 
 ---
 
@@ -156,6 +212,7 @@ Uygulama sırasında tespit edilen eksikler (otomatik veya ajan önerisi):
 | EK-20260614-11 | F1 | Fabrika meta vizyon | docs/FACTORY_META/* | tamamlandı |
 | EK-20260614-12 | F0 | verify-environment.sh | JDK + MCP + meta raporu | tamamlandı |
 | EK-20260614-15 | F0 | `test/` kaldırıldı | Saf fabrika template — doğrulama `scripts/` | tamamlandı |
+| EK-20260614-V3 | V3 | Factory Intelligence Layer | factory/ + 5 motor + agents freeze | tamamlandı |
 
 ---
 
@@ -166,6 +223,7 @@ Uygulama sırasında tespit edilen eksikler (otomatik veya ajan önerisi):
 | F0 | Zemin & Temel | tamamlandı |
 | F1 | Kolon & Taşıyıcı | tamamlandı |
 | F2 | Kat Döşeme | tamamlandı |
+| **V3** | **Factory Intelligence** | **tamamlandı** |
 | F3 | Duvar & Tesisat | işleniyor |
 | F4 | Cephe & UI | bekliyor |
 | F5 | Elektrik & Güvenlik | bekliyor |
@@ -173,4 +231,4 @@ Uygulama sırasında tespit edilen eksikler (otomatik veya ajan önerisi):
 | F7 | İç Mekan | bekliyor |
 | F8 | Anahtar Teslim | bekliyor |
 
-| **Son güncelleme:** 2026-06-14 · **Güncelleyen ajan:** Overmind
+| **Son güncelleme:** 2026-06-14 · **Güncelleyen ajan:** CEO / Overmind · **Sürüm:** v3.0.0-intelligence-alpha

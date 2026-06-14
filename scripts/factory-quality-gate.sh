@@ -34,6 +34,7 @@ run_warn() {
 }
 
 echo "==> Fabrika kalite kapısı"
+bash "$ROOT/scripts/factory/print-mission.sh"
 echo ""
 
 echo "── Kod & Standartlar ──"
@@ -46,6 +47,7 @@ run_check "audit-android-scaffold.sh" bash scripts/audit-android-scaffold.sh
 run_check "validate-android-template.sh" bash scripts/validate-android-template.sh
 run_check "validate-reasoning-template-xml.sh" bash scripts/validate-reasoning-template-xml.sh
 run_check "validate-reasoning-transcript.sh" bash scripts/validate-reasoning-transcript.sh
+run_check "validate-intelligence.sh (V3)" bash scripts/factory/validate-intelligence.sh
 run_check "run-factory-audit.sh" bash scripts/run-factory-audit.sh
 
 echo ""
@@ -59,6 +61,12 @@ else
   run_check "validate-yapilacaklar (template)" python3 scripts/governance/validate-yapilacaklar.py
   rm -f YAPILACAKLAR.md
 fi
+
+echo ""
+echo "── Factory productization (V4) ──"
+run_warn "check-freeze.py" python3 scripts/factory/check-freeze.py
+run_warn "scan-regression.py" python3 scripts/factory/scan-regression.py
+run_warn "build-factory-kpi.py" python3 scripts/factory/build-factory-kpi.py
 
 echo ""
 echo "── Ortam (yerel) ──"

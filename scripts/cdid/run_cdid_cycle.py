@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -346,6 +347,12 @@ def _run_wp_phase() -> int:
     _save(EXEC_OUT / "DELIVERY_PREDICTION_ACCURACY.json", prediction)
 
     _sync_auto_queue(wps)
+
+    # V3.1 — WP Closed → Proof Required → Feature PROVEN
+    proof_script = ROOT / "scripts" / "factory" / "wp-proof-gate.py"
+    if proof_script.exists():
+        import subprocess
+        subprocess.run([sys.executable, str(proof_script), "--sync-cdid"], cwd=ROOT, check=False)
 
     print(f"   ✅ CDID — {len(wps)} WPs · Coverage {coverage['execution_coverage_pct']}% · Unowned {unowned['count']}")
     print("   ✅ governance/cdid/GENERATED_WORK_PACKAGES.json")
