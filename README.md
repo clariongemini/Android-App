@@ -6,96 +6,792 @@
 </p>
 
 <p align="center">
-  33 Layers · 360 Components · Executive OS · 16 AI Agents · 10 Gradle Modules · MCP-Powered
+  <code>33 Layers</code> · <code>360 Components</code> · <code>Executive OS</code> · <code>16 AI Agents</code> · <code>10 Gradle Modules</code> · <code>MCP-Powered</code>
+</p>
+
+<p align="center">
+  <a href="https://github.com/clariongemini/Android-App">GitHub Template</a> ·
+  <a href="docs/BOOTSTRAP.md">Bootstrap</a> ·
+  <a href="docs/EXECUTIVE_OS.md">Executive OS</a> ·
+  <a href="AGENTS.md">Agents</a> ·
+  <a href="LICENSE">MIT License</a>
 </p>
 
 ---
 
-## 🇹🇷 Türkçe
+## İçindekiler / Table of Contents
 
-### Bu Nedir?
-
-**Ulas Autonomous Android APP Factory**, gelecekte geliştireceğiniz **tüm Android uygulamalarının final mimari taslağıdır**. Tekrar tekrar standart yazmak yerine; Cursor AI ajanları, 33 katmanlı anayasa, OEM uyumluluk (Samsung, MIUI), güvenlik, monetizasyon ve tam Gradle iskeleti **tek repoda** hazırdır.
-
-### Katmanlı Yapı
-
-| Katman | İçerik |
-|--------|--------|
-| **Overmind** | `.cursorrules` — merkezi koordinasyon, halüsinasyon sıfır protokolü |
-| **Executive OS** | CEO V7 — hiyerarşik denetim, tek ajan onayı yasak |
-| **16 AI Ajanı** | Factory 6 + CEO · CAO · CEC · EGC · CDID · AID · Intelligence |
-| **33 Katman** | 360 bileşen — vizyondan kusursuz deneyime (`docs/33-LAYER-ARCHITECTURE.md`) |
-| **13 Standart** | Liquid Glass, i18n, Security, Privacy, OEM, Billing, FCM… |
-| **10 Modül** | app + 7 core + 3 feature — Clean Architecture + MVVM |
-| **MCP Güçlendirme** | Browser, GitHub, Docker — ajanların gerçek dünya yetenekleri |
-
-### İlk Kurulum
-
-```bash
-./scripts/first-setup.sh          # MCP + sağlık kontrolü
-./scripts/init-new-app.sh "App" "com.sirket.app"
-# Cursor: /baslat + ürün promptu → YAPILACAKLAR.md
-```
-
-Cursor'da MCP: `docs/MCP_SETUP.md` — **P0: Browser + GitHub**
-
-### Tek Prompt
-
-> *"App'i 33 katman standartlarına göre geliştir."*
+| 🇹🇷 Türkçe | 🇬🇧 English |
+|------------|-------------|
+| [Sistem Özeti](#-türkçe--sistem-özeti) | [System Overview](#-english--system-overview) |
+| [Ne Sunar?](#ne-sunar) | [What It Delivers](#what-it-delivers) |
+| [Mimari Akış](#mimari-akış) | [Architecture Flow](#architecture-flow) |
+| [Adım Adım Kurulum](#adım-adım-kurulum-türkçe) | [Step-by-Step Setup](#step-by-step-setup-english) |
+| [Repo Haritası](#repo-haritası) | [Repository Map](#repository-map) |
+| [YAPILACAKLAR F0–F8](#yapilacaklar-f0f8) | [YAPILACAKLAR Phases](#yapilacaklar-phases-f0f8) |
+| [Ajanlar & Executive OS](#ajanlar--executive-os) | [Agents & Executive OS](#agents--executive-os) |
+| [Android İskeleti](#android-i̇skeleti-10-modül) | [Android Scaffold](#android-scaffold-10-modules) |
+| [Doğrulama & Kalite](#doğrulama--kalite-kapısı) | [Validation & Quality Gate](#validation--quality-gate) |
+| [Senaryolar](#kullanım-senaryoları) | [Usage Scenarios](#usage-scenarios) |
+| [Belge Dizini](#belge-dizini) | [Documentation Index](#documentation-index) |
+| [Neden Cursor?](#-türkçe--neden-cursor) | [Why Cursor?](#-english--why-cursor) |
+| [Cursor'da Nasıl Çalışır?](#cursor-entegrasyonu-nasıl-işler) | [How It Works in Cursor](#how-it-works-in-cursor) |
+| [Sana Ne Katacak?](#sana-ne-katacak--what-you-gain) | [What You Gain](#sana-ne-katacak--what-you-gain) |
 
 ---
 
-## 🇬🇧 English
+> ### 📖 Bu repoya ilk kez mi giriyorsun? / First time here?
+>
+> **🇹🇷** Bu repo bir Android uygulaması değil — **Cursor IDE içinde çalışan otonom bir AI fabrikasıdır.** Template'i kopyala → Cursor'da aç → `/baslat` yaz → AI senin adına vizyon, mimari, kod ve denetimi **kurallı** şekilde üretir.
+>
+> **🇬🇧** This is not an Android app — it is an **autonomous AI factory that runs inside Cursor IDE.** Copy the template → open in Cursor → type `/baslat` → AI produces vision, architecture, code, and audits **under strict rules**.
+>
+> ⏱️ Okuma süresi / Reading time: ~15 dk · Başlangıç / Start: [Adım 1](#adım-1--template-reposunu-oluştur)
 
-### What Is This?
+---
 
-**Ulas Autonomous Android APP Factory** is the **final architectural blueprint** for every Android app you will build. Instead of rewriting standards each time, you get Cursor AI agents, a 33-layer constitution, OEM compatibility (Samsung, MIUI), security, monetization, and a complete Gradle scaffold in **one repository**.
+## 🇹🇷 Türkçe — Neden Cursor?
 
-### Layered Architecture
+Bu fabrika **yalnızca Cursor IDE** (veya Cursor Agent destekli ortamlar) için tasarlanmıştır. Düz ChatGPT veya genel LLM sohbetinden farklı olarak:
 
-| Layer | Content |
-|-------|---------|
-| **Overmind** | `.cursorrules` — central coordination, zero-hallucination protocol |
-| **Executive OS** | CEO V7 — hierarchical audit, single-agent approval forbidden |
-| **16 AI Agents** | Factory 6 + CEO · CAO · CEC · EGC · CDID · AID · Intelligence |
-| **33 Layers** | 360 components — vision to flawless experience |
-| **13 Standards** | Liquid Glass, i18n, Security, Privacy, OEM, Billing, FCM… |
-| **10 Modules** | app + 7 core + 3 feature — Clean Architecture + MVVM |
-| **MCP Boost** | Browser, GitHub, Docker — real-world agent capabilities |
+| Özellik | Genel AI sohbet | Bu fabrika (Cursor) |
+|---------|-----------------|---------------------|
+| Proje hafızası | Her oturum sıfırdan | `.cursorrules` + `docs/00-INDEX.md` kalıcı |
+| Rol bazlı uzmanlık | Tek genel asistan | **16 departman ajanı** (CPO, Mimar, Android…) |
+| Halüsinasyon kontrolü | Kullanıcıya bağlı | **Zorunlu** — dosya okumadan referans yasak |
+| İş akışı | Serbest sohbet | **YAPILACAKLAR F0–F8** faz kapısı |
+| Denetim | Yok | **Hiyerarşik audit** — tek ajan onayı yasak |
+| Gerçek dünya verisi | Sınırlı | **MCP**: Browser, GitHub, Docker |
+| Komutlar | Yok | `/baslat` `/devam-et` `/denetle` `/faz-durumu` |
+| Otomatik doğrulama | Yok | `pre-commit` + CI + `factory-quality-gate.sh` |
 
-### First Setup
+**Cursor olmadan** bu repo yalnızca statik dokümantasyon ve Gradle şablonudur. **Cursor ile** canlı, denetimli, çok ajanlı bir **Executive OS** haline gelir.
+
+---
+
+## 🇬🇧 English — Why Cursor?
+
+This factory is designed **exclusively for Cursor IDE** (or Cursor Agent–enabled environments). Unlike plain ChatGPT or generic LLM chat:
+
+| Feature | Generic AI chat | This factory (Cursor) |
+|---------|-----------------|------------------------|
+| Project memory | Resets each session | Persistent via `.cursorrules` + `docs/00-INDEX.md` |
+| Role-based expertise | One general assistant | **16 department agents** (CPO, Architect, Android…) |
+| Hallucination control | User-dependent | **Mandatory** — no file references without reading |
+| Workflow | Free-form chat | **YAPILACAKLAR F0–F8** phase gate |
+| Audit | None | **Hierarchical audit** — single-agent approval forbidden |
+| Real-world data | Limited | **MCP**: Browser, GitHub, Docker |
+| Commands | None | `/baslat` `/devam-et` `/denetle` `/faz-durumu` |
+| Automated validation | None | `pre-commit` + CI + `factory-quality-gate.sh` |
+
+**Without Cursor**, this repo is static docs and a Gradle template. **With Cursor**, it becomes a live, audited, multi-agent **Executive OS**.
+
+---
+
+## Cursor Entegrasyonu — Nasıl İşler? / How It Works in Cursor
+
+### Cursor bileşen yığını / Cursor component stack
+
+```mermaid
+flowchart TB
+    subgraph CursorIDE["Cursor IDE"]
+        USER["👤 Geliştirici / Developer"]
+        CHAT["Chat + Agent Mode"]
+
+        subgraph Rules["Always-on Rules"]
+            CR[".cursorrules — Overmind"]
+            R00["00-zero-hallucination.mdc"]
+            R01["01–17 agent .mdc files"]
+        end
+
+        subgraph Commands["Slash Commands"]
+            C1["/baslat"]
+            C2["/devam-et"]
+            C3["/denetle"]
+            C4["/faz-durumu"]
+        end
+
+        subgraph Skills["Agent Skills"]
+            S1["yapilacaklar-planner"]
+            S2["yapilacaklar-executor"]
+            S3["zero-hallucination"]
+            S4["hierarchical-audit"]
+        end
+
+        subgraph Subagents["Subagents (L1 verify)"]
+            A1["phase-verifier"]
+            A2["phase-auditor"]
+            A3["hallucination-guard"]
+        end
+
+        subgraph MCP["MCP Servers"]
+            M1["Browser — pazar/OEM"]
+            M2["GitHub — CI/PR"]
+            M3["Docker — build"]
+        end
+
+        USER --> CHAT
+        CHAT --> Commands
+        Commands --> Skills
+        Skills --> Rules
+        Rules --> Subagents
+        CHAT --> MCP
+        Subagents --> YAP["YAPILACAKLAR.md"]
+        MCP --> GOV["governance/"]
+    end
+```
+
+### Cursor oturum akışı / Cursor session flow
+
+```mermaid
+sequenceDiagram
+    participant U as Geliştirici / Developer
+    participant C as Cursor Agent
+    participant O as Overmind (.cursorrules)
+    participant Y as YAPILACAKLAR.md
+    participant A as Departman Ajanları
+    participant M as MCP (Browser/GitHub)
+    participant G as Governance Scripts
+
+    U->>C: /baslat + ürün promptu
+    C->>O: Kuralları yükle
+    O->>Y: F0 işleniyor — plan oku
+    C->>A: CPO → vizyon belgeleri
+    A->>M: Rakip/pazar araştırması (Browser)
+    C->>A: Mimar → MODULE_MAP
+    C->>A: Android → kod üretimi
+    A->>G: validate-yapilacaklar.py
+    G-->>C: ✅ Faz geçerli
+    C->>U: L1 doğrulama özeti
+    U->>C: /devam-et
+    C->>Y: Sonraki faz işleniyor
+```
+
+### Kullanıcı yolculuğu / User journey
+
+```
+  GitHub Template                Cursor IDE                    Çıktı / Output
+  ─────────────────              ───────────                   ──────────────
+
+  [Use this template]  ──►  [first-setup.sh]     ──►  MCP + hooks hazır
+         │                  [init-new-app.sh]    ──►  Android 10 modül + governance
+         │                  [/baslat prompt]     ──►  YAPILACAKLAR F0–F8 planı
+         │                  [/devam-et]          ──►  Faz faz kod + belgeler
+         │                  [/denetle]           ──►  CAO/CEO audit zinciri
+         └──────────────────► [quality-gate]      ──►  Play Store'a hazır temel
+```
+
+---
+
+## Sana Ne Katacak? / What You Gain
+
+### 🇹🇷 Cursor kullanıcısı olarak kazanımların
+
+| # | Sorun (fabrika olmadan) | Bu repo ile |
+|---|-------------------------|-------------|
+| 1 | Her projede mimari sıfırdan | 33 katman + 10 modül hazır iskelet |
+| 2 | AI uydurma dosya/API üretir | Halüsinasyon sıfır protokolü + validator |
+| 3 | "Şimdi ne yapayım?" belirsizliği | YAPILACAKLAR F0–F8 net yol haritası |
+| 4 | Tek AI cevabına güvenmek | 16 ajan + hiyerarşik denetim |
+| 5 | Samsung/MIUI'de uygulama ölür | OEM P0 matris + kod şablonu |
+| 6 | Güvenlik sonradan eklenir | Security/Privacy/Pentest standartları baştan |
+| 7 | i18n unutulur | Hard-coded string yasağı + locale JSON |
+| 8 | Monetizasyon geç kalır | Billing 7 gün trial şablonu |
+| 9 | Ölçüm yok | AID Sprint P event pipeline |
+| 10 | Her app için standart yazmak | `sync-standards.sh` — tek kaynak |
+
+### 🇬🇧 What Cursor users gain
+
+| # | Without factory | With this repo |
+|---|-----------------|----------------|
+| 1 | Architecture from scratch every project | 33 layers + 10-module ready scaffold |
+| 2 | AI invents files/APIs | Zero-hallucination protocol + validators |
+| 3 | "What do I do next?" uncertainty | YAPILACAKLAR F0–F8 clear roadmap |
+| 4 | Trusting one AI answer | 16 agents + hierarchical audit |
+| 5 | App dies on Samsung/MIUI | OEM P0 matrix + code templates |
+| 6 | Security bolted on later | Security/Privacy/Pentest from day one |
+| 7 | i18n forgotten | No hard-coded strings + locale JSON |
+| 8 | Monetization arrives late | Billing 7-day trial template |
+| 9 | No measurement | AID Sprint P event pipeline |
+| 10 | Rewrite standards per app | `sync-standards.sh` — single source |
+
+### Cursor'da tipik bir gün / A typical day in Cursor
+
+```
+09:00  cursor .                          → Proje açılır, Overmind kuralları yüklenir
+09:05  /baslat "Offline habit tracker…"  → YAPILACAKLAR oluşur, F0 başlar
+09:30  Agent: CPO pazar analizi          → MCP Browser → Play Store rakipleri
+10:00  Agent: Mimar MODULE_MAP           → 10 modül yapısı onaylanır
+11:00  /devam-et                         → F3 Android iskelet doğrulanır
+14:00  Agent: Android Compose UI         → Liquid Glass tema uygulanır
+16:00  /denetle                          → CAO audit, OEM matris kontrol
+17:00  ./scripts/factory-quality-gate.sh → 100/100 kalite kapısı
+```
+
+---
+
+## 🇹🇷 Türkçe — Sistem Özeti
+
+**Ulas Autonomous Android APP Factory**, tek bir GitHub template reposu üzerinden **sınırsız sayıda Android uygulaması** üretmek için tasarlanmış kurumsal düzeyde bir **AI destekli geliştirme fabrikasıdır**.
+
+Her yeni uygulamada standartları, mimariyi, güvenlik kurallarını, OEM matrisini ve Gradle iskeletini **sıfırdan yazmak zorunda kalmazsınız**. Fabrika:
+
+1. **Karar verir** — Ürün, pazar, roadmap (CPO, PDC, Mavi Okyanus)
+2. **Tasarlar** — 33 katmanlı mimari, modül haritası (Baş Mimar)
+3. **İnşa eder** — Jetpack Compose, Clean Architecture, 10 modül (Android Elite)
+4. **Denetler** — Güvenlik, OEM, hiyerarşik onay zinciri (CAO, CEO, EGC)
+5. **Ölçer** — Analytics Sprint P, gerçek kullanıcı verisi (AID)
+
+Tüm süreç **halüsinasyon sıfır** protokolü ve **YAPILACAKLAR.md** faz kapısı ile yönetilir: AI, plan onaylanmadan ve aktif faz tamamlanmadan rastgele kod üretmez.
+
+> **Fabrika ≠ Uygulama.** Bu repoda uygulama kodu yaşamaz; `templates/android/project/` altındaki iskelet, `init-new-app.sh` ile hedef projeye kopyalanır.
+
+---
+
+## 🇬🇧 English — System Overview
+
+**Ulas Autonomous Android APP Factory** is an enterprise-grade **AI-powered development factory** built on a single GitHub template repository to produce **unlimited Android applications** with consistent quality.
+
+You never rewrite standards, architecture, security rules, OEM matrices, or Gradle scaffolds for each new app. The factory:
+
+1. **Decides** — Product, market, roadmap (CPO, PDC, Blue Ocean)
+2. **Designs** — 33-layer architecture, module map (Chief Architect)
+3. **Builds** — Jetpack Compose, Clean Architecture, 10 modules (Android Elite)
+4. **Audits** — Security, OEM, hierarchical approval chain (CAO, CEO, EGC)
+5. **Measures** — Analytics Sprint P, live user data (AID)
+
+The entire flow is governed by a **zero-hallucination protocol** and the **YAPILACAKLAR.md** phase gate: AI does not generate random code before the plan is approved and the active phase is complete.
+
+> **Factory ≠ Application.** Application code does not live in this repo; the scaffold under `templates/android/project/` is copied to your target project via `init-new-app.sh`.
+
+---
+
+## Ne Sunar? / What It Delivers
+
+| Bileşen / Component | Ne işe yarar? / Purpose | Nasıl davranır? / Behavior |
+|---------------------|-------------------------|---------------------------|
+| **The Overmind** (`.cursorrules`) | Merkezi koordinasyon | Tüm ajanları yönlendirir; YAPILACAKLAR okumadan kod yasak |
+| **16 AI Ajanı** (`.cursor/rules/`) | Uzmanlaşmış departmanlar | Her ajan belirli katmanlardan sorumlu; tek başına nihai onay veremez |
+| **Executive OS** (`governance/`) | CEO V7, sprint lock, denetim | Karar → teslimat → ölçüm zinciri; runtime dosyalar proje bazlı üretilir |
+| **YAPILACAKLAR** (`YAPILACAKLAR.md`) | F0–F8 faz planı | Aynı anda tek faz `işleniyor`; L1 doğrulama zorunlu |
+| **33 Katman** (`docs/33-LAYER-ARCHITECTURE.md`) | Sistem anayasası | 360 bileşen manifest ile otomatik denetlenir |
+| **13 Standart** (`docs/03-STANDARDS/`) | Liquid Glass, i18n, Security… | Kod ve belge üretiminde referans; ihlal = süreç durur |
+| **Android İskeleti** (`templates/android/project/`) | 10 Gradle modülü | Hilt, Room, Billing, FCM, OEM, Compose tema hazır |
+| **MCP** (Browser + GitHub P0) | Gerçek dünya yetenekleri | Pazar araştırması, CI/PR, dokümantasyon doğrulama |
+| **Doğrulama Scriptleri** (`scripts/`) | Otomatik kalite kapısı | `factory-quality-gate.sh` → hedef 100/100 |
+
+---
+
+## Mimari Akış / Architecture Flow
+
+```mermaid
+flowchart TB
+    subgraph Input["Mimar / Architect"]
+        P[Product Prompt]
+    end
+
+    subgraph Gate["YAPILACAKLAR Gate"]
+        Y[YAPILACAKLAR.md F0→F8]
+    end
+
+    subgraph Factory["Factory Division"]
+        CPO[CPO · Vision]
+        ARCH[Architect · Modules]
+        AND[Android Elite · Code]
+        SEC[Security Auditor]
+        OEM[OEM Auditor]
+    end
+
+    subgraph Executive["Executive OS"]
+        PDC[PDC · Roadmap]
+        CEO[CEO · Sprint Lock]
+        CAO[CAO · Audit Quality]
+        EGC[EGC · Company Health]
+    end
+
+    subgraph Output["Deliverable"]
+        APP[Android App + Docs + Governance]
+    end
+
+    P --> Y
+    Y --> CPO --> PDC --> ARCH --> AND
+    AND --> SEC --> OEM
+    SEC --> CAO --> CEO --> EGC
+    OEM --> APP
+    CEO --> APP
+```
+
+---
+
+## Adım Adım Kurulum (Türkçe)
+
+### Ön koşullar
+
+| Gereksinim | Açıklama |
+|------------|----------|
+| [Cursor](https://cursor.com) | AI ajan kuralları ve MCP için |
+| Git | Template klonlama ve sürüm kontrolü |
+| JDK 17+ | Scaffold sonrası `./gradlew assembleDebug` için |
+| Android Studio | İsteğe bağlı; Gradle sync ve emülatör |
+
+---
+
+### Adım 1 — Template reposunu oluştur
+
+1. [github.com/clariongemini/Android-App](https://github.com/clariongemini/Android-App) adresine git
+2. **Use this template** → **Create a new repository**
+3. Yeni repoyu klonla ve Cursor'da aç:
 
 ```bash
+git clone https://github.com/<org>/<yeni-repo>.git
+cd <yeni-repo>
+cursor .
+```
+
+**Ne olur?** Fabrikanın tam kopyası (kurallar, governance, şablonlar, scriptler) proje reposuna gelir. Henüz uygulama kodu yoktur.
+
+---
+
+### Adım 2 — İlk kurulum (`first-setup.sh`)
+
+```bash
+chmod +x scripts/*.sh scripts/**/*.sh 2>/dev/null || true
 ./scripts/first-setup.sh
-./scripts/init-new-app.sh "MyApp" "com.company.myapp"
-# Cursor: /baslat + product prompt → YAPILACAKLAR.md
 ```
 
-MCP guide: `docs/MCP_SETUP.md` — **P0: Browser + GitHub**
+**Script ne yapar?**
 
-### One Prompt
-
-> *"Build the app according to 33-layer standards."*
+| # | İşlem | Sonuç |
+|---|--------|-------|
+| 1 | Script izinlerini ayarlar | Tüm `scripts/` çalıştırılabilir olur |
+| 2 | `setup-mcp.sh` çağırır | `.cursor/mcp.json` yoksa example'dan oluşturur |
+| 3 | MCP denetimi (`--warn`) | P0 eksikse uyarır, durdurmaz |
+| 4 | Git pre-commit hook kurar | Commit öncesi otomatik denetim |
+| 5 | Gradle wrapper bootstrap | Android şablonunda `gradlew` hazır |
+| 6 | `factory-health.sh` | 10 kategoride sağlık skoru (hedef 100/100) |
 
 ---
 
-## Agents / Ajanlar
-
-Factory + Executive OS — [AGENTS.md](AGENTS.md) · [docs/EXECUTIVE_OS.md](docs/EXECUTIVE_OS.md) · [docs/YAPILACAKLAR_SISTEMI.md](docs/YAPILACAKLAR_SISTEMI.md)
-
-**Komutlar:** `/baslat` · `/devam-et` · `/denetle` · `/faz-durumu`
-
-## Health Score / Sağlık Puanı
+### Adım 3 — MCP kurulumu (P0 zorunlu)
 
 ```bash
-./scripts/factory-health.sh        # Target: 100/100
-./scripts/factory-quality-gate.sh  # Tüm doğrulamalar + bileşik kapı
+./scripts/setup-mcp.sh
+./scripts/check-mcp.sh
 ```
 
-[docs/FACTORY_SCORECARD.md](docs/FACTORY_SCORECARD.md)
+| MCP | Öncelik | Ne sağlar? |
+|-----|---------|------------|
+| **cursor-ide-browser** | P0 | Play Store, rakip siteleri, OEM dokümantasyonu |
+| **GitHub MCP** | P0 | PR, CI durumu, issue, release yönetimi |
+| Docker MCP | P1 | İzole build ortamı |
+| GitKraken MCP | P1 | Git branch, commit, PR |
+| Fetch MCP | P2 | Web/API dokümantasyonu çekme |
+
+**GitHub PAT adımları:**
+
+1. GitHub → Settings → Developer settings → Personal access tokens
+2. `repo` scope ile token oluştur
+3. `.cursor/mcp.json` içinde `GITHUB_PERSONAL_ACCESS_TOKEN` değerini güncelle
+4. Cursor'ı yeniden başlat
+
+Detay: [`docs/MCP_SETUP.md`](docs/MCP_SETUP.md)
+
+---
+
+### Adım 4 — Uygulama projesi oluştur (`init-new-app.sh`)
+
+```bash
+./scripts/init-new-app.sh "UygulamaAdi" "com.sirket.uygulama"
+```
+
+**Bu komut sırasında otomatik oluşur:**
+
+| Çıktı | Konum | İçerik |
+|-------|-------|--------|
+| Merkezi hafıza | `docs/00-INDEX.md` | Uygulama adı, paket, sürüm |
+| Vizyon şablonları | `docs/01-VISION/` | PRODUCT_BRIEF, MARKET_ANALYSIS, MONETIZATION |
+| Mimari şablonları | `docs/02-ARCHITECTURE/` | MODULE_MAP, DATA_FLOW |
+| Android iskeleti | Proje kökü | 10 modül, Gradle wrapper, Compose tema |
+| Executive OS | `governance/` | Sprint lock, approval queue, roadmap seed |
+| Faz planı | `YAPILACAKLAR.md` | F0–F8 bina metaforu |
+| Proje meta | `.factory/project.json` | App adı, paket, fabrika sürümü |
+
+**Gradle modülleri:** `app` + 7 `core` + 3 `feature` — detay [Android İskeleti](#android-i̇skeleti-10-modül)
+
+---
+
+### Adım 5 — Cursor'da plan başlat (`/baslat`)
+
+Cursor chat'e yaz:
+
+```
+/baslat
+
+Uygulama: [Kısa açıklama — örn. offline-first alışkanlık takipçisi, 7 gün trial, TR/EN]
+Hedef kitle: [örn. 25–45, sağlık bilinci]
+Monetizasyon: [örn. abonelik, 7 gün ücretsiz deneme]
+```
+
+**Ne olur?**
+
+1. Overmind `YAPILACAKLAR.md` içindeki kaynak promptu doldurur
+2. **F0** `işleniyor` olur — governance, MCP, hafıza doğrulanır
+3. AI **doğrudan kod yazmaz**; önce vizyon (F1) ve mimari (F2) tamamlanır
+4. Her faz bitince L1 ajan/subagent doğrulaması gerekir
+
+---
+
+### Adım 6 — Faz faz geliştirme
+
+| Komut | Ne yapar? |
+|-------|-----------|
+| `/devam-et` | Aktif fazdan kaldığı yerden devam eder |
+| `/faz-durumu` | F0–F8 özet tablosu |
+| `/denetle` | Hiyerarşik denetim zinciri (CAO → CEO) |
+
+Manuel doğrulama:
+
+```bash
+python3 scripts/governance/validate-yapilacaklar.py
+python3 scripts/governance/validate-audit-chain.py
+./scripts/agent-approval-gate.sh
+./scripts/run-ceo-cycle.sh
+```
+
+---
+
+### Adım 7 — Kalite kapısı (yayın öncesi)
+
+```bash
+./scripts/factory-quality-gate.sh   # Tüm doğrulamalar — hedef 100/100
+./scripts/pre-commit.sh             # Commit öncesi denetim
+./gradlew assembleDebug             # Android derleme kanıtı (JDK 17+)
+```
+
+---
+
+## Step-by-Step Setup (English)
+
+### Prerequisites
+
+| Requirement | Description |
+|-------------|-------------|
+| [Cursor](https://cursor.com) | AI agent rules and MCP |
+| Git | Template clone and version control |
+| JDK 17+ | For `./gradlew assembleDebug` after scaffold |
+| Android Studio | Optional; Gradle sync and emulator |
+
+---
+
+### Step 1 — Create from template
+
+1. Go to [github.com/clariongemini/Android-App](https://github.com/clariongemini/Android-App)
+2. Click **Use this template** → **Create a new repository**
+3. Clone and open in Cursor:
+
+```bash
+git clone https://github.com/<org>/<new-repo>.git
+cd <new-repo>
+cursor .
+```
+
+**Result:** Full factory copy (rules, governance, templates, scripts). No application code yet.
+
+---
+
+### Step 2 — First setup
+
+```bash
+chmod +x scripts/*.sh scripts/**/*.sh 2>/dev/null || true
+./scripts/first-setup.sh
+```
+
+| # | Action | Outcome |
+|---|--------|---------|
+| 1 | Sets script permissions | All `scripts/` become executable |
+| 2 | Runs `setup-mcp.sh` | Creates `.cursor/mcp.json` from example if missing |
+| 3 | MCP audit (`--warn`) | Warns on missing P0, does not block |
+| 4 | Installs git pre-commit hook | Automatic checks before commit |
+| 5 | Gradle wrapper bootstrap | `gradlew` ready in Android template |
+| 6 | `factory-health.sh` | Health score across 10 categories (target 100/100) |
+
+---
+
+### Step 3 — MCP setup (P0 required)
+
+```bash
+./scripts/setup-mcp.sh
+./scripts/check-mcp.sh
+```
+
+See [Step 3 TR table](#adım-3--mcp-kurulumu-p0-zorunlu) for MCP priorities.
+
+Full guide: [`docs/MCP_SETUP.md`](docs/MCP_SETUP.md)
+
+---
+
+### Step 4 — Create application project
+
+```bash
+./scripts/init-new-app.sh "MyApp" "com.company.myapp"
+```
+
+See [Step 4 TR table](#adım-4--uygulama-projesi-oluştur-init-new-appsh) for generated artifacts.
+
+---
+
+### Step 5 — Start plan in Cursor (`/baslat`)
+
+```
+/baslat
+
+App: [Short description — e.g. offline-first habit tracker, 7-day trial, TR/EN]
+Target audience: [e.g. 25–45, health-conscious]
+Monetization: [e.g. subscription, 7-day free trial]
+```
+
+**Behavior:** Overmind fills YAPILACAKLAR, activates F0, blocks code until vision (F1) and architecture (F2) are complete.
+
+---
+
+### Step 6 — Phase-by-phase development
+
+| Command | Action |
+|---------|--------|
+| `/devam-et` | Continue from active phase |
+| `/faz-durumu` | F0–F8 status summary |
+| `/denetle` | Hierarchical audit chain |
+
+---
+
+### Step 7 — Quality gate (pre-release)
+
+```bash
+./scripts/factory-quality-gate.sh
+./scripts/pre-commit.sh
+./gradlew assembleDebug
+```
+
+---
+
+## Repo Haritası / Repository Map
+
+```
+.
+├── .cursorrules              # Overmind — merkezi anayasa
+├── .cursor/
+│   ├── rules/                # 16 ajan + 00 halüsinasyon kuralı
+│   ├── commands/             # /baslat /devam-et /denetle /faz-durumu
+│   ├── skills/               # planner, executor, zero-hallucination, audit
+│   └── agents/               # phase-verifier, plan-expander, auditors
+├── YAPILACAKLAR.md           # Aktif faz planı (proje bazlı)
+├── AGENTS.md                 # Ajan dizini ve denetim zinciri
+├── governance/               # Executive OS charter + protokoller
+│   ├── executive/            # CEO OS, hiyerarşik denetim, onay protokolü
+│   ├── product_decision/     # PDC — roadmap
+│   ├── execution/            # CEC — teslimat hizası
+│   ├── analytics/            # AID — Sprint P ölçüm
+│   ├── market/               # Growth — talep istihbaratı
+│   └── ...                   # linguistic, curriculum, blue_ocean, trends…
+├── docs/
+│   ├── 00-INDEX.md           # Proje hafızası
+│   ├── 33-LAYER-ARCHITECTURE.md
+│   ├── 33-LAYER-MANIFEST.yaml
+│   ├── 03-STANDARDS/         # 13 teknik standart
+│   ├── BOOTSTRAP.md          # Detaylı kurulum kılavuzu
+│   ├── EXECUTIVE_OS.md
+│   └── YAPILACAKLAR_SISTEMI.md
+├── scripts/                  # Doğrulama, bootstrap, CEO/CAO döngüleri
+└── templates/
+    ├── android/project/      # 10 modüllü Gradle iskeleti
+    ├── governance/           # Runtime JSON/MD şablonları
+    └── YAPILACAKLAR.template.md
+```
+
+**Runtime vs Git:** Sprint lock, approval queue, roadmap JSON gibi canlı dosyalar `.gitignore` ile dışlanır; `init-governance.sh` her projede sıfırdan üretir. Politika: [`governance/FACTORY_REPO_POLICY.md`](governance/FACTORY_REPO_POLICY.md)
+
+---
+
+## YAPILACAKLAR F0–F8 / YAPILACAKLAR Phases F0–F8
+
+| Faz | Bina metaforu | TR — Ne yapılır? | EN — What happens? |
+|-----|---------------|------------------|---------------------|
+| **F0** | Zemin & temel | MCP, governance, hafıza, audit chain | MCP, governance, memory, audit chain |
+| **F1** | Kolon & taşıyıcı | CPO vizyon, pazar, monetizasyon, PDC roadmap | CPO vision, market, monetization, PDC roadmap |
+| **F2** | Kat döşeme | Mimari, modül haritası, bağımlılık kuralları | Architecture, module map, dependency rules |
+| **F3** | Duvar & tesisat | Gradle iskelet, Hilt, Room, i18n | Gradle scaffold, Hilt, Room, i18n |
+| **F4** | Cephe & UI | Compose, Liquid Glass, adaptive layout | Compose, Liquid Glass, adaptive layout |
+| **F5** | Elektrik & güvenlik | Security audit, OEM matris (Samsung/MIUI P0) | Security audit, OEM matrix (Samsung/MIUI P0) |
+| **F6** | Ölçüm & analitik | AID Sprint P, event catalog, Firebase gate | AID Sprint P, event catalog, Firebase gate |
+| **F7** | İç mekan | Feature work packages, roadmap P0 implementasyon | Feature WPs, roadmap P0 implementation |
+| **F8** | Anahtar teslim | CAO + CEO cycle + approval gate + release | CAO + CEO cycle + approval gate + release |
+
+**Durum ibareleri / Status:** `bekliyor` · `işleniyor` · `tamamlandı` — aynı anda yalnızca **bir** faz `işleniyor` olabilir.
+
+Detay: [`docs/YAPILACAKLAR_SISTEMI.md`](docs/YAPILACAKLAR_SISTEMI.md)
+
+---
+
+## Ajanlar & Executive OS / Agents & Executive OS
+
+### Factory Division (6)
+
+| Ajan | Kural | Sorumluluk |
+|------|-------|------------|
+| CPO | `01-product-cpo.mdc` | Vizyon, pazar, monetizasyon |
+| Baş Mimar | `02-architect.mdc` | Mimari, modül haritası, offline-first |
+| Android Elite | `03-android-elite.mdc` | Compose UI, Kotlin, i18n |
+| Denetçi | `04-auditor-security.mdc` | Güvenlik, QA, performans |
+| OEM Denetçi | `05-oem-compat-auditor.mdc` | Samsung, MIUI, OPPO — P0 release blocker |
+| MCP Orkestratör | `06-mcp-orchestrator.mdc` | MCP kurulum doğrulama |
+
+### Intelligence & Executive (10)
+
+| Ajan | Kural | Rol |
+|------|-------|-----|
+| LIUD | `07-linguistic-intelligence.mdc` | Talep istihbaratı, locale |
+| CIKA | `08-curriculum-intelligence.mdc` | Müfredat zekâsı |
+| PDC | `09-product-decision-council.mdc` | Roadmap kararları |
+| Mavi Okyanus | `10-mavi-okyanus.mdc` | Portföy keşfi |
+| CEO V7 | `11-ceo-agent.mdc` | Delivery orchestration |
+| CAO | `12-chief-audit-officer.mdc` | Denetim kalitesi |
+| CEC | `13-chief-execution-council.mdc` | Execution alignment |
+| EGC | `14-executive-governance-council.mdc` | Company health |
+| CDID | `15-chief-delivery-intelligence.mdc` | Decision → work packages |
+| AID | `16-analytics-intelligence.mdc` | Measurement (Sprint P) |
+| Growth | `17-marketing-growth.mdc` | GTM, ASO |
+
+**Hiyerarşik denetim:** Hiçbir ajan kendi işini nihai onaylayamaz. Zincir: Uygulayan → L1 üst departman → CAO → CEO → EGC.
+
+Tam eşleme: [`governance/executive/HIERARCHICAL_AUDIT_CHAIN.md`](governance/executive/HIERARCHICAL_AUDIT_CHAIN.md) · [`AGENTS.md`](AGENTS.md)
+
+---
+
+## Android İskeleti (10 Modül) / Android Scaffold (10 Modules)
+
+| Modül | Paket | Ne sunar? |
+|-------|-------|-----------|
+| `:app` | `{{PACKAGE}}` | Application, MainActivity, FCM, locales |
+| `:core:common` | `.core.common` | AppResult, paylaşılan tipler |
+| `:core:designsystem` | `.core.designsystem` | Liquid Glass tema, GlassCard |
+| `:core:i18n` | `.core.i18n` | LocaleManager, hard-coded string yasağı |
+| `:core:database` | `.core.database` | Room + SQLCipher hazır |
+| `:core:network` | `.core.network` | Retrofit/OkHttp iskeleti |
+| `:core:security` | `.core.security` | Root/emulator detection, Play Integrity |
+| `:core:oem` | `.core.oem` | Samsung/MIUI/OPPO uyumluluk |
+| `:feature:home` | `.feature.home` | Ana ekran Compose iskeleti |
+| `:feature:settings` | `.feature.settings` | Ayarlar modülü |
+| `:feature:premium` | `.feature.premium` | Play Billing, 7 gün trial |
+
+**Teknoloji yığını:** Kotlin · Jetpack Compose · Hilt · Room · WorkManager · Firebase FCM · Play Billing · Maestro E2E
+
+Şablon konumu: `templates/android/project/` → `init-new-app.sh` ile proje köküne kopyalanır.
+
+---
+
+## 13 Teknik Standart / 13 Technical Standards
+
+| Standart | Dosya | Kapsam |
+|----------|-------|--------|
+| Liquid Glass UI | `LIQUID_GLASS.md` | Compose tema, 120fps hedef |
+| i18n | `I18N.md` | `assets/locales/tr.json`, `en.json` — hard-coded yasak |
+| Security | `SECURITY.md` | SQLCipher, EncryptedSharedPreferences |
+| Privacy | `PRIVACY.md` | GDPR/KVKK, veri minimizasyonu |
+| OEM | `OEM_COMPATIBILITY.md` + `OEM_MATRIX.yaml` | Samsung, MIUI P0 |
+| Background | `BACKGROUND_PROCESSING.md` | WorkManager, pil dostu |
+| FCM | `FCM_PUSH.md` | Push bildirim şablonu |
+| Monetization | `MONETIZATION_TECH.md` | 7 gün trial + abonelik |
+| Play Integrity | `PLAY_INTEGRITY.md` | Sahtekârlık tespiti |
+| Testing | `TESTING.md` | Unit, Maestro E2E |
+| Performance | `PERFORMANCE.md` | 120fps, lazy list |
+| Pentest | `PENTEST.md` | Release öncesi checklist |
+
+Dizin: [`docs/03-STANDARDS/`](docs/03-STANDARDS/)
+
+---
+
+## Doğrulama & Kalite Kapısı / Validation & Quality Gate
+
+| Script | Ne denetler? | Ne zaman? |
+|--------|--------------|-----------|
+| `factory-health.sh` | 10 kategori, 100/100 hedef | Her zaman |
+| `factory-quality-gate.sh` | Tüm doğrulamalar + bileşik skor | Yayın / merge öncesi |
+| `validate-code.sh` | Zorunlu dosya varlığı | CI + pre-commit |
+| `validate-yapilacaklar.py` | Faz tutarlılığı | Her kod değişikliği öncesi |
+| `validate-audit-chain.py` | Hiyerarşik denetim zinciri | Faz kapanışı |
+| `audit-layers.sh` | 33 katman bütünlüğü | CI |
+| `validate-android-template.sh` | Gradle wrapper, placeholder yok | CI |
+| `pre-commit.sh` | Yukarıdakilerin birleşimi | Her commit |
+
+```bash
+./scripts/factory-quality-gate.sh   # ✅ hedef: 100/100
+```
+
+Skor kartı: [`docs/FACTORY_SCORECARD.md`](docs/FACTORY_SCORECARD.md)
+
+---
+
+## Kullanım Senaryoları / Usage Scenarios
+
+### Senaryo A — Yeni proje (önerilen)
+
+GitHub Template → `first-setup.sh` → `init-new-app.sh` → `/baslat`
+
+### Senaryo B — Mevcut Android projesine aktarma
+
+```bash
+git clone https://github.com/clariongemini/Android-App.git ~/android-factory
+~/android-factory/scripts/sync-standards.sh /path/to/existing-app
+cd /path/to/existing-app && ./scripts/governance/init-governance.sh
+```
+
+Mevcut `app/` kodu korunur; AI kuralları ve governance eklenir.
+
+### Senaryo C — Submodule ile güncel standart
+
+```bash
+git submodule add https://github.com/clariongemini/Android-App.git .factory
+./.factory/scripts/sync-standards.sh .
+git submodule update --remote .factory && ./.factory/scripts/sync-standards.sh .
+```
+
+Detay: [`docs/BOOTSTRAP.md`](docs/BOOTSTRAP.md)
+
+---
+
+## Belge Dizini / Documentation Index
+
+| Belge | Açıklama |
+|-------|----------|
+| [`docs/00-INDEX.md`](docs/00-INDEX.md) | Proje hafızası |
+| [`docs/BOOTSTRAP.md`](docs/BOOTSTRAP.md) | Detaylı kurulum senaryoları |
+| [`docs/EXECUTIVE_OS.md`](docs/EXECUTIVE_OS.md) | CEO V7, script ağacı |
+| [`docs/YAPILACAKLAR_SISTEMI.md`](docs/YAPILACAKLAR_SISTEMI.md) | Faz sistemi, komutlar |
+| [`docs/33-LAYER-ARCHITECTURE.md`](docs/33-LAYER-ARCHITECTURE.md) | 33 katman anayasa |
+| [`docs/MCP_SETUP.md`](docs/MCP_SETUP.md) | MCP kurulum kılavuzu |
+| [`governance/FACTORY_REPO_POLICY.md`](governance/FACTORY_REPO_POLICY.md) | Git vs runtime politika |
+| [`AGENTS.md`](AGENTS.md) | Tam ajan dizini |
+
+---
+
+## Tek Prompt / One Prompt
+
+> 🇹🇷 *"Uygulamayı 33 katman standartlarına göre geliştir."*  
+> 🇬🇧 *"Build the app according to 33-layer standards."*
+
+Overmind önce `YAPILACAKLAR.md` okur, aktif fazı uygular, L1 denetim zincirini takip eder — **rastgele kod üretmez**.
+
+---
 
 ## License
 
-MIT — [LICENSE](LICENSE)
+MIT — see [`LICENSE`](LICENSE)
 
-**Version:** v0.6.0-publish-ready · Hierarchical audit · 16 agents
+<p align="center">
+  <strong>Version:</strong> v0.6.0-publish-ready · Hierarchical audit · 16 agents · Executive OS 7.0
+</p>
+
+<p align="center">
+  <sub>Designed for architects who build systems, not single apps.</sub><br>
+  <sub>Tek uygulama değil; sistem kuran mimarlar için tasarlandı.</sub>
+</p>

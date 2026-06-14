@@ -28,6 +28,10 @@
 - `scripts/setup-mcp.sh`, `validate-android-template.sh`, `validate-factory-governance.sh`
 - Genişletilmiş `.gitignore` — governance runtime JSON
 
+### Documentation (v0.6.2)
+
+- `README.md` — kapsamlı TR/EN rehber, Cursor entegrasyonu, Mermaid diyagramlar, kullanıcı yolculuğu
+
 ### ADR-009: Executive Operating System
 
 **Durum:** Kabul edildi  
