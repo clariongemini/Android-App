@@ -57,6 +57,13 @@
 - `.cursor/rules/18-state-recovery.mdc` — truncation protokolü
 - `docs/STATE_RECOVERY.md` — Teacher/Student recovery akışı
 
+### Factory smoke test (v0.6.6)
+
+- `test/` — FactorySmoke denetim uygulaması + `run-factory-audit.sh` (32 kontrol)
+- `scripts/scaffold-android-project-to.sh` — hedef dizine Android iskelet
+- Scaffold binary copy fix (`gradle-wrapper.jar`)
+- `state-recovery.sh` — `RECOVERY_ROOT` ile alt proje checkpoint
+
 ### ADR-009: Executive Operating System
 
 **Durum:** Kabul edildi  

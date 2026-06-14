@@ -42,7 +42,10 @@ def copy_tree(src: Path, dst: Path):
             dest.mkdir(parents=True, exist_ok=True)
         else:
             dest.parent.mkdir(parents=True, exist_ok=True)
-            dest.write_text(subst(item.read_text(encoding="utf-8")), encoding="utf-8")
+            try:
+                dest.write_text(subst(item.read_text(encoding="utf-8")), encoding="utf-8")
+            except UnicodeDecodeError:
+                shutil.copy2(item, dest)
 
 if (target / "settings.gradle.kts").exists():
     print("HATA: Android projesi zaten mevcut (settings.gradle.kts)")

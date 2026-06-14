@@ -129,6 +129,7 @@ Uygulama sırasında tespit edilen eksikler (otomatik veya ajan önerisi):
 | EK-20260614-05 | F0 | `gradle-build-loop.sh` + snapshots | Cursor terminal köprüsü | tamamlandı |
 | EK-20260614-06 | F0 | MCP handoff + auditor glob | context optimizasyonu | tamamlandı |
 | EK-20260614-07 | F0 | `state-recovery.sh` + `18-state-recovery.mdc` | truncation / yarım Gradle kurtarma | tamamlandı |
+| EK-20260614-08 | F0 | `test/` smoke harness | fabrika adım denetimi + FactorySmoke app | tamamlandı |
 
 ---
 

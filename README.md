@@ -493,6 +493,8 @@ python3 scripts/governance/validate-audit-chain.py
 
 ```bash
 ./scripts/factory-quality-gate.sh   # Tüm doğrulamalar — hedef 100/100
+./test/run-factory-audit.sh         # Smoke app + 32 fabrika kontrolü
+./test/bootstrap-smoke-app.sh         # FactorySmoke uygulamasını oluştur
 ./scripts/pre-commit.sh             # Commit öncesi denetim
 ./gradlew assembleDebug             # Android derleme kanıtı (JDK 17+)
 ```

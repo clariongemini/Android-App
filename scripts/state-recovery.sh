@@ -11,7 +11,7 @@
 #   RECOVERY_AUTO=1              recover sonrası gradle-build-loop tekrar dener
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="${RECOVERY_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 RECOVERY_DIR="$ROOT/.cursor/snapshots/recovery"
 CHECKPOINT_META="$RECOVERY_DIR/LATEST.checkpoint.json"
 HANDOFF="$RECOVERY_DIR/LATEST.recovery.handoff.json"
