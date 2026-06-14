@@ -46,7 +46,7 @@ Her oturumda bu olayların app'te tanımlı ve pipeline'da olduğunu doğrula:
 
 `app_open` · `session_start` · `session_end` · `exercise_started` · `exercise_completed` · `phrase_started` · `phrase_completed` · `phrase_skipped` · `phrase_repeated` · `premium_view` · `premium_start` · `streak_day` · `daily_mission_completed`
 
-**Kod:** `app/src/main/java/com/konusma/domain/model/AnalyticsEvent.kt`  
+**Kod:** `app/src/main/java/<package>/domain/model/AnalyticsEvent.kt` — `.factory/project.json` paketine göre  
 **Pipeline:** `AnalyticsRepository` → Room (local) + Firebase (remote)
 
 ---

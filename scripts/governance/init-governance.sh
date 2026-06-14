@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Bootstrap full Executive OS for a Factory project (generic seeds, not live Konuşma data).
+# Bootstrap full Executive OS for a Factory project (generic seeds).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -58,7 +58,7 @@ p.write_text(p.read_text(encoding="utf-8").replace("{{PACKAGE_NAME}}", "$PACKAGE
 PY
 fi
 
-# Full generic state (overwrites Konuşma live snapshots if present)
+# Full generic state (overwrites prior project snapshots if present)
 python3 "$ROOT/scripts/governance/seed-governance-state.py" "$APP_NAME" "$PACKAGE_NAME" "$SLUG"
 
 # V3 Factory Intelligence Layer

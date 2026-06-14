@@ -1,6 +1,6 @@
 # Yıl 2 Organik Büyüme ve Finansal Model
 
-**Proje:** Konuşma Gelişim Platformu  
+**Proje:** {{APP_NAME}}  
 **Horizon:** Yıl 2 (ay 13–24)  
 **Kısıt:** Ücretli UA yok (Yıl 1 ile aynı)  
 **B2B/B2B2C:** **Eşik sonrası** — `B2B_GATE_CRITERIA.md`  

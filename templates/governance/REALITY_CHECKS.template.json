@@ -1,0 +1,5 @@
+{
+  "schema": "factory.reality_checks.v1",
+  "note": "Per-project feature reality checks — copy to governance/reality/REALITY_CHECKS.json after init-new-app",
+  "checks": {}
+}

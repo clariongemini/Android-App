@@ -3,50 +3,52 @@
 from __future__ import annotations
 
 import json
-import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-ANALYTICS_KT = ROOT / "app/src/main/java/com/konusma/domain/model/AnalyticsEvent.kt"
-REPO_KT = ROOT / "app/src/main/java/com/konusma/repository/AnalyticsRepository.kt"
+sys.path.insert(0, str(ROOT / "scripts" / "governance"))
+from project_meta import kotlin_path, load_project_meta  # noqa: E402
+
 GATE = ROOT / "governance/analytics/SPRINT_P_ACTIVATION_GATE.json"
 CATALOG = ROOT / "governance/analytics/SPRINT_P_EVENT_CATALOG.json"
 APP_GRADLE = ROOT / "app/build.gradle.kts"
-FIREBASE_DS = ROOT / "app/src/main/java/com/konusma/data/remote/datasource/FirebaseAnalyticsRemoteDataSource.kt"
-SESSION_TRACKER = ROOT / "app/src/main/java/com/konusma/analytics/AnalyticsSessionTracker.kt"
 GOOGLE_SERVICES = ROOT / "app/google-services.json"
 
 
-def _fail(msg: str) -> None:
-    print(f"   ❌ {msg}")
-    sys.exit(1)
-
-
 def main() -> int:
-    print("AID Sprint P — activation validation")
+    meta = load_project_meta(ROOT)
+    print(f"AID Sprint P — activation validation ({meta['package_name']})")
     errors: list[str] = []
 
-    if not ANALYTICS_KT.exists():
-        errors.append("AnalyticsEvent.kt missing")
-    else:
-        kt = ANALYTICS_KT.read_text(encoding="utf-8")
+    analytics_kt = kotlin_path(ROOT, "domain", "model", "AnalyticsEvent.kt")
+    repo_kt = kotlin_path(ROOT, "repository", "AnalyticsRepository.kt")
+    firebase_ds = kotlin_path(ROOT, "data", "remote", "datasource", "FirebaseAnalyticsRemoteDataSource.kt")
+    session_tracker = kotlin_path(ROOT, "analytics", "AnalyticsSessionTracker.kt")
+
+    if not analytics_kt.exists():
+        errors.append(f"AnalyticsEvent.kt missing ({analytics_kt.relative_to(ROOT)})")
+    elif CATALOG.exists():
+        kt = analytics_kt.read_text(encoding="utf-8")
         catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
-        for item in catalog["minimum_events"]:
+        for item in catalog.get("minimum_events", []):
             const = item["constant"]
-            if f"const val {const} =" not in kt and f'const val {const} =' not in kt:
+            if f"const val {const} =" not in kt:
                 errors.append(f"Missing constant {const} for {item['name']}")
 
-    if not REPO_KT.exists() or "remoteDataSource.trackEvent" not in REPO_KT.read_text(encoding="utf-8"):
+    if not repo_kt.exists() or "remoteDataSource.trackEvent" not in repo_kt.read_text(encoding="utf-8"):
         errors.append("AnalyticsRepository does not forward to remoteDataSource.trackEvent")
 
-    for path, label in [(FIREBASE_DS, "FirebaseAnalyticsRemoteDataSource"), (SESSION_TRACKER, "AnalyticsSessionTracker")]:
+    for path, label in [(firebase_ds, "FirebaseAnalyticsRemoteDataSource"), (session_tracker, "AnalyticsSessionTracker")]:
         if not path.exists():
             errors.append(f"{label} missing")
 
-    gradle = APP_GRADLE.read_text(encoding="utf-8")
-    if "firebase.analytics" not in gradle:
-        errors.append("firebase-analytics dependency missing in app/build.gradle.kts")
+    if APP_GRADLE.exists():
+        gradle = APP_GRADLE.read_text(encoding="utf-8")
+        if "firebase.analytics" not in gradle:
+            errors.append("firebase-analytics dependency missing in app/build.gradle.kts")
+    else:
+        errors.append("app/build.gradle.kts missing — run init-new-app.sh first")
 
     firebase_connected = GOOGLE_SERVICES.exists()
     field_proof_path = ROOT / "governance/analytics/output/sprint_p_field_proof.json"
@@ -54,8 +56,6 @@ def main() -> int:
     if field_proof_path.exists():
         proof = json.loads(field_proof_path.read_text(encoding="utf-8"))
         field_verified = proof.get("minimum_pass") is True
-
-    pipeline_ready = len(errors) == 0
 
     if errors:
         for err in errors:
@@ -67,6 +67,10 @@ def main() -> int:
     print("   ✅ FirebaseAnalyticsRemoteDataSource present")
     print("   ✅ AnalyticsSessionTracker present")
     print(f"   {'✅' if firebase_connected else '⚠️ '} Firebase credentials: {'connected' if firebase_connected else 'awaiting google-services.json'}")
+
+    if not GATE.exists() or not CATALOG.exists():
+        print("   ⚠️  Sprint P gate/catalog missing — init-governance.sh")
+        return 0
 
     gate = json.loads(GATE.read_text(encoding="utf-8"))
     if firebase_connected and field_verified:
@@ -87,10 +91,12 @@ def main() -> int:
         "field_events_verified": field_verified,
     }
     gate["minimum_events"] = [e["name"] for e in json.loads(CATALOG.read_text(encoding="utf-8"))["minimum_events"]]
+    pkg_rel = analytics_kt.parent.parent.parent.relative_to(ROOT / "app" / "src" / "main" / "java")
+    base = f"app/src/main/java/{pkg_rel}"
     gate["code_refs"] = {
-        "repository": "app/src/main/java/com/konusma/repository/AnalyticsRepository.kt",
-        "firebase": "app/src/main/java/com/konusma/data/remote/datasource/FirebaseAnalyticsRemoteDataSource.kt",
-        "session": "app/src/main/java/com/konusma/analytics/AnalyticsSessionTracker.kt",
+        "repository": f"{base}/repository/AnalyticsRepository.kt",
+        "firebase": f"{base}/data/remote/datasource/FirebaseAnalyticsRemoteDataSource.kt",
+        "session": f"{base}/analytics/AnalyticsSessionTracker.kt",
         "catalog": "governance/analytics/SPRINT_P_EVENT_CATALOG.json",
     }
     GATE.write_text(json.dumps(gate, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

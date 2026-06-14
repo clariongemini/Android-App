@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts" / "governance"))
+from project_meta import load_project_meta  # noqa: E402
+
 EXEC = ROOT / "governance" / "executive"
 CAO = ROOT / "governance" / "cao" / "department_scoreboard.json"
 AUDIT = ROOT / "governance" / "cao" / "audit_report.json"
@@ -79,6 +83,7 @@ def _compute_verdict(
 
 def main() -> int:
     now = datetime.now(timezone.utc)
+    meta = load_project_meta(ROOT)
     cao = _load(CAO)
     audit = _load(AUDIT)
     consistency = _load(CONSISTENCY)
@@ -159,10 +164,10 @@ def main() -> int:
         "",
         "## Executive Summary",
         "",
-        "Konuşma **AI-Native Product Company OS V3** — CEO yönetir, EGC denetler.",
+        f"{meta.get('app_name', 'App')} **Executive OS** — CEO yönetir, EGC denetler.",
         "Pipeline: Market → Intelligence → PDC → CAO → CEC → Factory → CEO → CSGB → EGC",
         "",
-        f"- **P0 kararlar:** {len(p0)} — TR fonem, LATE_TALKER, daily missions",
+        f"- **P0 kararlar:** {len(p0)} — roadmap P0 maddeleri",
         f"- **Kritik içerik boşluğu (Rule 7):** {len(critical_gaps)} tema (%60+ gap)",
         f"- **Review departman:** {', '.join(s['department_name'] for s in review_depts) or 'none'}",
         "- **Nihai şirket kararı:** EGC `EGC_VERDICT.json` (Step 18)",

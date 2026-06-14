@@ -24,7 +24,7 @@
 | Konu | Merci |
 |------|--------|
 | Yeni proje inşaatı başlasın mı | Mimar L1 + Overmind L2 |
-| Konuşma roadmap önceliği | PDC (Mavi Okyanus sadece önerir) |
+| Flagship app roadmap önceliği | PDC (Mavi Okyanus sadece önerir) |
 | Finansal model resmi rakam | Growth `YEAR*_` belgeleri |
 | Kullanıcı dili / öbek | LIUD |
 

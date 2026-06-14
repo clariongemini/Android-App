@@ -1,6 +1,6 @@
 # Yıl 3 Organik Büyüme ve Finansal Model
 
-**Proje:** Konuşma Gelişim Platformu  
+**Proje:** {{APP_NAME}}  
 **Horizon:** Yıl 3 (ay 25–36)  
 **B2B/B2B2C:** Olgun kanal (eşik + 12 ay kanıt)  
 **Senaryolar:** P10 · P50 · P75 · P90

@@ -1,6 +1,6 @@
 # Pazar Talebi Araştırması — Gerçek İhtiyaç Keşfi
 
-**Proje:** Konuşma Gelişim Platformu  
+**Proje:** {{APP_NAME}}  
 **Tarih:** 2026-06-11  
 **Tür:** Bağımsız pazar araştırması  
 **Kısıt:** Tahmin yok · Varsayım yok · Ürün/roadmap/vizyon geçici olarak göz ardı edildi  

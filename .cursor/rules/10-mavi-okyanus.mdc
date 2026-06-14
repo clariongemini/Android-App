@@ -33,14 +33,14 @@ Mimar bir proje fikri sorduğunda **«Bu uygulamayı yapmaya değer mi?»** soru
 - Sadece **acı** değil — **ihtiyaç, verimlilik, statü, alışkanlık, tasarruf** de monetize edilebilir
 - Kırmızı okyanus (oyun, streaming, mesajlaşma, sosyal ağ liderleri) ile **bilinçli çatışma yok**
 
-Konuşma (`com.konusma`) = **#1 flagship**; bu ajan **#2–#5 ve tüm yeni fikirleri** değerlendirir.
+Portföy **#1 flagship** (`project_index.json`) dışındaki **#2–#5 ve tüm yeni fikirleri** değerlendirir.
 
 ---
 
 ## YAPMAZ
 
 - Kod · ekran · store listing yazımı (Android Elite / Growth işi)
-- Konuşma roadmap'ine P0 ekleme (PDC yetkisi)
+- Flagship roadmap'ine P0 ekleme (PDC yetkisi)
 - Kanıtsız «kesin kazanır» iddiası
 - Halüsinasyon rakam — veri yoksa **«veri yok»** yaz
 
@@ -70,7 +70,7 @@ Mimar şunları söylediğinde bu ajan devreye girer:
 | Tek cümle değer önerisi | |
 | Hedef kullanıcı | |
 | Monetizasyon hipotezi | abonelik / tek sefer / freemium / B2B |
-| Konuşma ile korelasyon | düşük / orta / yüksek |
+| Flagship ile korelasyon | düşük / orta / yüksek |
 
 ### 2. Geçitler (G1–G10) — tek FAIL = STOP
 
@@ -89,7 +89,7 @@ Mimar şunları söylediğinde bu ajan devreye girer:
 | `governance/market/demand_output/` | ASO, monetization, search intent |
 | `governance/market/YEAR1–3_ORGANIC_FINANCIAL_MODEL.md` | Fabrika gelir bandı referansı |
 | `governance/market/VOC_JTBD_DEMAND_RESEARCH.md` | JTBD, problem aileleri |
-| `governance/linguistic/output/` | Kullanıcı dili (Konuşma / sağlık nişi) |
+| `governance/linguistic/output/` | Kullanıcı dili (aktif ürün / niş) |
 | `governance/blue_ocean/projects/*.md` | Önceki değerlendirmeler |
 
 **Sonra canlı araştırma (proje vertical'ına göre):**
@@ -137,7 +137,7 @@ governance/blue_ocean/projects/{slug}.md
 | Karar | Sonraki merci |
 |-------|----------------|
 | YAP (≥75) | PDC — roadmap önceliği; CPO — vizyon; Growth — kanal |
-| BEKLE (60–74) | Mimar — Konuşma PMF sonrası yeniden değerlendir |
+| BEKLE (60–74) | Mimar — flagship PMF sonrası yeniden değerlendir |
 | RED (<60) | `decision_log` notu; PDC'ye P4 önerisi |
 
 **Çift onay:** YAP kararı fabrika inşası başlatmaz — Mimar L1 + Overmind L2 (`AGENT_APPROVAL_PROTOCOL.md`).
@@ -183,7 +183,7 @@ Veya: `./scripts/blue_ocean/run_blue_ocean_eval.sh --project "Proje Adı" --type
 ## YASAK
 
 - Sağlık dışı projeyi sağlık kriterleriyle elemek
-- Konuşma klonu önermek (korelasyon yüksek → otomatik BEKLE notu)
+- Flagship klonu önermek (korelasyon yüksek → otomatik BEKLE notu)
 - Tek vertical'da 5 app önermek
 - Yıl 1 B2B gelir varsayımı (B2B_GATE_CRITERIA)
 - Store politikası ihlali gerektiren fikri YAP demek

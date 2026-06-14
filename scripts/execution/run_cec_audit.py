@@ -17,30 +17,18 @@ QUEUE = ROOT / "governance" / "executive" / "APPROVAL_QUEUE.md"
 MANIFEST = OUT / "ROADMAP_CONSUMPTION_MANIFEST.json"
 YAPILACAKLAR = ROOT / "YAPILACAKLAR.md"
 
-P0_SIGNALS: dict[str, dict] = {
-    "F001": {
-        "name": "TR Fonem Expansion (R/Ş/L)",
+
+def _p0_spec(feature: dict) -> dict:
+    """Generic P0 signals from roadmap — project adds REALITY_CHECKS for deep proof."""
+    fid = feature.get("id", "F000")
+    name = feature.get("name") or feature.get("title") or fid
+    return {
+        "name": name,
         "checks": [
-            ("file_contains_all", "app/src/main/assets/content/tr/age_4_7.json", ['"id": "r"', '"id": "sh"', '"id": "l"']),
-            ("path_exists", "app/src/main/java/com/konusma/data/local/dao/PhonemeProgressDao.kt", None),
+            ("grep", "app/src/main", fid),
+            ("grep", "docs", fid),
         ],
-    },
-    "F002": {
-        "name": "LATE_TALKER Parent Phrase Bank",
-        "checks": [
-            ("grep", "app/src/main/assets", r"late.?talk|geç.?konuş|LATE_TALKER"),
-            ("grep", "curriculum", r"LATE_TALKER|late_talker"),
-        ],
-    },
-    "F003": {
-        "name": "365 Daily Missions CHILD_4_7 (non-repeating)",
-        "checks": [
-            ("path_exists", "app/src/main/java/com/konusma/domain/usecase/GetDailyTaskUseCase.kt", None),
-            ("file_contains", "app/src/main/java/com/konusma/domain/model/JourneyMilestone.kt", "365"),
-            ("path_exists", "curriculum/daily_practice_engine.json", None),
-        ],
-    },
-}
+    }
 
 
 def _load_json(path: Path) -> dict:
@@ -170,7 +158,7 @@ def main() -> int:
 
     roadmap = _load_json(ROADMAP)
     p0_items = roadmap.get("P0", [])
-    p0_board = [_score_p0(f["id"], P0_SIGNALS[f["id"]]) for f in p0_items if f["id"] in P0_SIGNALS]
+    p0_board = [_score_p0(f["id"], _p0_spec(f)) for f in p0_items if f.get("id")]
     working_on = sum(1 for p in p0_board if p["active_execution"])
     p0_total = len(p0_board) or 1
     delivery_alignment = int(100 * working_on / p0_total)

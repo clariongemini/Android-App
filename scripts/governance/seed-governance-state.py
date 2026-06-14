@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write generic governance state seeds — no Konuşma live data."""
+"""Write generic governance state seeds — no live project data."""
 from __future__ import annotations
 
 import json
@@ -78,7 +78,7 @@ def main() -> int:
         "version": "1.0",
         "flagship": {"slug": slug, "package": pkg, "name": app, "portfolio_rank": 1},
         "candidates": [],
-        "note": "Fill via Mavi Okyanus discovery — not live Konuşma data",
+        "note": "Fill via Mavi Okyanus discovery — per-project portfolio data",
     })
 
     write("market/USER_INTENT_SIGNALS.json", {"signals": []})

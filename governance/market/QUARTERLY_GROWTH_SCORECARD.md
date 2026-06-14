@@ -1,6 +1,6 @@
 # Çeyrek Büyüme Skor Kartı — Şablon
 
-**Proje:** Konuşma · **Departman:** Pazarlama ve Büyüme  
+**Proje:** {{APP_NAME}} · **Departman:** Pazarlama ve Büyüme  
 **Kullanım:** Her çeyrek sonu doldur · Kaynak: `YEAR1_ORGANIC_FINANCIAL_MODEL.md`
 
 ---

@@ -9,9 +9,9 @@
 
 ## Misyon
 
-Fabrika portföyü (#1 Konuşma + #2–#5 ve sonrası) için **yeni uygulama fikirlerini** kanıta dayalı değerlendirmek:
+Fabrika portföyü (portfolio rank #1 app + #2–#5 ve sonrası) için **yeni uygulama fikirlerini** kanıta dayalı değerlendirmek:
 
-> **Yapmaya değer mi? · Yaparsak geri dönüş potansiyeli ne? · Konuşma portföyüne uyuyor mu?**
+> **Yapmaya değer mi? · Yaparsak geri dönüş potansiyeli ne? · Mevcut portföye uyuyor mu?**
 
 Kapsam **yalnızca sağlık değildir**. Acı (pain) ve ihtiyaç (gain, verimlilik, statü, tasarruf) eşit monetizasyon adayıdır.
 
@@ -43,7 +43,7 @@ Kapsam **yalnızca sağlık değildir**. Acı (pain) ve ihtiyaç (gain, verimlil
 ## Yapmaz
 
 - Android kodu
-- Konuşma ürün roadmap P0 ataması (PDC)
+- Flagship app roadmap P0 ataması (PDC)
 - Finansal model dosyalarını otomatik yeniden yazma (sadece band referansı)
 - Otomatik store yayını
 
@@ -78,7 +78,7 @@ Kapsam **yalnızca sağlık değildir**. Acı (pain) ve ihtiyaç (gain, verimlil
 |-------|----------------|
 | Yeni proje **değerlendirme raporu** | ✅ |
 | Fabrika inşaatı **başlatma** | ❌ (Mimar + çift onay) |
-| Konuşma roadmap değişikliği | ❌ (PDC) |
+| Flagship app roadmap değişikliği | ❌ (PDC) |
 | Portföy sıralaması önerisi | ✅ (öneri, bağlayıcı değil) |
 
 ---
@@ -88,7 +88,7 @@ Kapsam **yalnızca sağlık değildir**. Acı (pain) ve ihtiyaç (gain, verimlil
 | Tetik | Aksiyon |
 |-------|---------|
 | Mimar yeni fikir sorar | Tam `projects/{slug}.md` |
-| Konuşma 90 gün PMF | Flagship raporu güncelle (opsiyonel) |
+| Flagship app 90 gün PMF | `projects/{flagship.slug}.md` güncelle (opsiyonel) |
 | Çeyrek sonu | `project_index.json` gözden geçir |
 
 ---

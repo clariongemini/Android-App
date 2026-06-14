@@ -1,7 +1,7 @@
 # Product Decision Council (PDC)
 
 **Türkçe:** Ürün Karar Konseyi  
-**Otorite:** Konuşma ekosisteminde **en üst karar mercii**
+**Otorite:** Active product ekosisteminde **en üst karar mercii**
 
 ---
 

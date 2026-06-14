@@ -148,7 +148,7 @@ python3 scripts/factory/record-memory.py --type lesson --title "..." --related F
 ### Application Revenue (NOT factory revenue)
 
 ```json
-{ "scope": "application", "app": "Konuşma", "mrr": 1200 }
+{ "scope": "application", "app": "{{APP_NAME}}", "mrr": 0 }
 ```
 
 ### Velocity benchmark

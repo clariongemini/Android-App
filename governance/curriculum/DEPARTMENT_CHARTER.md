@@ -2,7 +2,7 @@
 
 **Türkçe:** Müfredat Zekâsı ve Bilgi Mimarisi Departmanı  
 **Kod:** CIKA  
-**Otorite:** Konuşma ekosisteminde eğitim mimarisi — en yüksek otorite katmanlarından biri
+**Otorite:** Active product ekosisteminde eğitim mimarisi — en yüksek otorite katmanlarından biri
 
 ---
 
@@ -152,7 +152,7 @@ Tüket → karar ver → yayınla (gap report + backlog → LIUD, Product, Growt
 
 ## Başarı koşulu
 
-Kullanıcı Konuşma'yı **her gün, yıllarca** kullanabilmeli — içerik tükenmeden.
+Kullanıcı {{APP_NAME}}'i **her gün, yıllarca** kullanabilmeli — içerik tükenmeden.
 
 **Hedef:** Piyasadaki en geniş, en derin, en uyarlanabilir konuşma öğrenme müfredat ekosistemi.
 

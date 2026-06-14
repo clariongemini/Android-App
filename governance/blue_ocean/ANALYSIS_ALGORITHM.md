@@ -35,7 +35,7 @@ Tek **FAIL** → karar **RED** (skor bilgilendirme amaçlı yazılabilir).
 | G5 | Fabrika uyumu | Mevcut fabrika modüllerinin ≥%50 yeniden kullanımı mümkün |
 | G6 | Dağıtım gerçekçiliği | Solo + AI fabrika ile Yıl 1'de 50+ hedef kullanıcı/abone hipotezi savunulabilir |
 | G7 | Etik / güven | Yanıltıcı tıbbi/finansal iddia veya çocuk verisi riski yönetilebilir |
-| G8 | Portföy korelasyonu | Konuşma ile öbek/rakip/GTM örtüşmesi **%40 altı** (üstü → BEKLE notu, FAIL değil) |
+| G8 | Portföy korelasyonu | Portfolio rank #1 app ile öbek/rakip/GTM örtüşmesi **%40 altı** (üstü → BEKLE notu, FAIL değil) |
 | G9 | Halüsinasyon güvenliği | Kritik iddiaların ≥%70'i cite edilebilir kaynakta |
 | G10 | Mimar onayı kartı | Tek cümle değer önerisi net yazıldı |
 
@@ -56,7 +56,7 @@ Her boyut 1–5 puanlanır; **uygulama türü** ağırlıkları `APP_TYPE_PROFIL
 | F | Fabrika yeniden kullanım | Kod, i18n, billing, offline, content JSON |
 | A | ASO / keşif | Long-tail, store arama netliği |
 | S | Sosyal / forum intent | «Ne önerirsiniz?» thread yoğunluğu |
-| P | Portföy çeşitliliği | Konuşma'dan farklı vertical |
+| P | Portföy çeşitliliği | Flagship app'ten farklı vertical |
 | R | Rakip memnuniyetsizlik | Negatif VOC yoğunluğu, fırsat |
 | G | Gelir geri dönüş potansiyeli | Yıl 1 P50 MRR bandı vs fabrika maliyeti |
 
@@ -91,7 +91,7 @@ Her raporda doldur:
 | Negatif tema sayısı | Fiyat, çökme, «işe yaramadı», «çocuksu», «duymuyor» vb. |
 | Negatif oran | negatif / toplam (band) |
 | En güçlü 3 memnuniyetsizlik | Alıntı veya parafraz + kaynak |
-| Konuşma/fikir bunu çözer mi? | EVET / KISMEN / HAYIR |
+| Değerlendirilen fikir bunu çözer mi? | EVET / KISMEN / HAYIR |
 
 **Fırsat skoru R:** negatif oran yüksek + lider ★ düşük → R yüksek.
 

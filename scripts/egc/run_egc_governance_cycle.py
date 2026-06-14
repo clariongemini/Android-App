@@ -27,24 +27,23 @@ MASTER = EXEC / "CEO_MASTER_REPORT.md"
 CSGB = EXEC / "CEO_STRATEGIC_GOVERNANCE_REVIEW.md"
 
 FIVE_YEAR_NORTH_STAR = (
-    "Build the world's most effective, scalable, evidence-driven speech development ecosystem "
-    "for children and families across 6+ locales with clinical credibility and retention proof."
+    "Ship measurable, high-retention Android products across multiple verticals "
+    "with evidence-driven governance and portfolio outcomes."
 )
 
 COMPETITORS = [
-    {"name": "Speech Blubs", "speech_focus": 95, "retention_proof": 85, "locale_depth": 70, "clinical": 75},
-    {"name": "SpeakEasy", "speech_focus": 80, "retention_proof": 70, "locale_depth": 65, "clinical": 60},
-    {"name": "Lingokids", "speech_focus": 60, "retention_proof": 90, "locale_depth": 95, "clinical": 55},
-    {"name": "Duolingo ABC", "speech_focus": 55, "retention_proof": 92, "locale_depth": 90, "clinical": 50},
+    {"name": "Competitor A", "speech_focus": 85, "retention_proof": 80, "locale_depth": 70, "clinical": 60},
+    {"name": "Competitor B", "speech_focus": 70, "retention_proof": 75, "locale_depth": 80, "clinical": 55},
+    {"name": "Competitor C", "speech_focus": 60, "retention_proof": 90, "locale_depth": 90, "clinical": 50},
 ]
 
-KONUSMA_EST = {
-    "speech_focus": 88,
-    "retention_proof": 15,
-    "locale_depth": 45,
-    "clinical": 62,
-    "intelligence_pipeline": 92,
-    "execution_alignment": 66,
+APP_EST = {
+    "speech_focus": 0,
+    "retention_proof": 0,
+    "locale_depth": 0,
+    "clinical": 0,
+    "intelligence_pipeline": 0,
+    "execution_alignment": 0,
 }
 
 
@@ -180,7 +179,7 @@ def _department_roi(cao: dict) -> dict:
 
 def _global_leadership() -> dict:
     dims = ["speech_focus", "retention_proof", "locale_depth", "clinical"]
-    k_scores = [KONUSMA_EST[d] for d in dims]
+    k_scores = [APP_EST[d] for d in dims]
     k_avg = sum(k_scores) / len(dims)
     comparisons = []
     for comp in COMPETITORS:
@@ -189,16 +188,16 @@ def _global_leadership() -> dict:
         comparisons.append({
             "competitor": comp["name"],
             "composite": round(c_avg, 1),
-            "vs_konusma": round(k_avg - c_avg, 1),
+            "vs_flagship": round(k_avg - c_avg, 1),
             "dimensions": {d: comp[d] for d in dims},
         })
     leader_avg = sum(c["composite"] for c in comparisons) / len(comparisons)
     return {
-        "konusma_composite": round(k_avg, 1),
-        "konusma_intelligence_pipeline": KONUSMA_EST["intelligence_pipeline"],
+        "flagship_composite": round(k_avg, 1),
+        "flagship_intelligence_pipeline": APP_EST["intelligence_pipeline"],
         "leader_benchmark_avg": round(leader_avg, 1),
         "gap_to_leaders": round(leader_avg - k_avg, 1),
-        "leadership_score": max(0, min(100, int(50 + (k_avg - leader_avg) + KONUSMA_EST["intelligence_pipeline"] * 0.2))),
+        "leadership_score": max(0, min(100, int(50 + (k_avg - leader_avg) + APP_EST["intelligence_pipeline"] * 0.2))),
         "comparisons": comparisons,
     }
 
@@ -419,7 +418,7 @@ def main() -> int:
         "",
         "## Global Leadership",
         "",
-        f"- Konuşma composite: **{leadership['konusma_composite']}**",
+        f"- Flagship composite: **{leadership['flagship_composite']}**",
         f"- Leader benchmark avg: **{leadership['leader_benchmark_avg']}**",
         f"- Leadership score: **{leadership['leadership_score']}/100**",
         "",

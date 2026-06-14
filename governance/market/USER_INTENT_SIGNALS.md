@@ -10,7 +10,7 @@
 
 ## Birleşik sıralama (Play + Forum) — en güvenilir tablo
 
-| Sıra | Kullanıcı isteği | Eşleşme | Konuşma karşılığı |
+| Sıra | Kullanıcı isteği | Eşleşme | {{APP_NAME}} karşılığı |
 |------|------------------|---------|-------------------|
 | 1 | Oyunlaştırma / eğlence | 229 | ✅ Luna/Milo — çocuk segment |
 | 2 | Video model / ayna / taklit | 100 | ✅ Ayna + karaoke + model video |

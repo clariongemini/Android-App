@@ -1,6 +1,6 @@
 # Voice of Customer + Jobs To Be Done — Talep Araştırması
 
-**Proje:** Konuşma Gelişim Platformu  
+**Proje:** {{APP_NAME}}  
 **Tarih:** 2026-06-11  
 **Tür:** VOC + JTBD — yalnızca insan problemleri  
 **Kısıt:** Hastalık prevalansı yok · Pazar büyüklüğü yok · Segment seçimi yok · Beachhead yok · Ürün önerisi yok
@@ -280,7 +280,7 @@
 |---------|------------|--------------------------------------|
 | Çocuk konuşma uygulaması | $30–65/yıl, $37/ay | «Picks up parent not child» «Great job when silent» |
 | Kekemelik uygulaması | $100/yıl gold | «Can't access after paying» «DAF doesn't work» |
-| Konuşma uygulaması (genel) | lifetime $100+ | «Repetitive» «child lost interest» |
+| Terapi / eğitim uygulaması (genel) | lifetime $100+ | «Repetitive» «child lost interest» |
 | Özel terapi | $100–250/seans | «8 month wait» önce; sonra «not sure effective» |
 | Kamu konuşması coach | $75–100/yıl | «Does not improve» «YouTube better» |
 | Abonelik (iptal edilemeyen) | çeşitli | «Charged after cancel» «no record of account» |

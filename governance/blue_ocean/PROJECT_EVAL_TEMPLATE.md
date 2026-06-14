@@ -28,7 +28,7 @@
 | Uygulama türü | `{type_id}` |
 | Dominant ihtiyaç | Acı / Korku / Verimlilik / … |
 | Monetizasyon | |
-| Konuşma korelasyonu | |
+| Flagship app korelasyonu | |
 
 ## Geçit sonuçları (G1–G10)
 

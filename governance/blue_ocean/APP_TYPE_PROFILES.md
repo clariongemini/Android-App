@@ -30,7 +30,7 @@ Mavi Okyanus ajanı, proje değerlendirmesine başlamadan önce **tek bir primar
 
 Değerler toplamı = **1.00** per type.
 
-### `health_clinical_adjacent` (Konuşma referans türü)
+### `health_clinical_adjacent` (flagship referans türü — örn. konuşma terapisi vertical)
 
 | D | C | M | L | F | A | S | P | R | G |
 |---|---|---|---|---|---|---|---|---|---|
@@ -162,17 +162,17 @@ Bonus sonrası boyutlar 5'i geçmez; normalize et.
 
 ---
 
-## Konuşma (#1) referans benchmark
+## Portfolio rank #1 app referans benchmark
 
-Yeni projeler portföy skoru **P** boyutunda Konuşma ile karşılaştırılır:
+Yeni projeler portföy skoru **P** boyutunda `project_index.json` → `flagship` ile karşılaştırılır:
 
 | Korelasyon | P puanı rehberi |
 |------------|-----------------|
 | Farklı vertical, farklı öbek | 4–5 |
 | Aynı kullanıcı, farklı problem | 2–3 |
 | Aynı rakip seti, farklı özellik | 2–3 |
-| Konuşma modülü spin-off | 1–2 (+ BEKLE önerisi) |
-| Konuşma klonu | 1 (+ portföy cezası) |
+| Flagship modül spin-off | 1–2 (+ BEKLE önerisi) |
+| Flagship klonu | 1 (+ portföy cezası) |
 
 ---
 

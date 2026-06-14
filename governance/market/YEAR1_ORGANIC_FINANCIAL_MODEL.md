@@ -1,6 +1,6 @@
 # Yıl 1 Organik Büyüme ve Finansal Model
 
-**Proje:** Konuşma Gelişim Platformu (`com.konusma`)  
+**Proje:** {{APP_NAME}}  
 **Departman:** Pazarlama ve Büyüme (Growth Hacker)  
 **Tarih:** 2026-06-12 (rev. — B2B Yıl1 çıkarıldı, Demand Intelligence)  
 **Kısıt:** **Ücretli reklam yok** · **B2B/B2B2C Yıl 1 = $0 trafik**  
@@ -44,7 +44,7 @@
 | TR Diksiyon Dersleri | 100.000+ | 4,01 | %0 (IAP yok) |
 | TR Adım Adım Konuşuyorum | 50.000+ | — | düşük hacim yorum |
 | TR Logue (kekemelik) | 10.000+ | 4,35 | %4,9 |
-| **Konuşma** | **0 (pre-launch)** | — | — |
+| **{{APP_NAME}}** | **0 (pre-launch)** | — | — |
 
 Detay: `docs/COMPETITOR_ANALYSIS.md`
 

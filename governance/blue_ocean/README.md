@@ -43,7 +43,7 @@ Yeni uygulama fikirlerini **yapmaya değer mi** sorusuyla değerlendirir. Çıkt
 
 - **Genel:** Sağlık, eğitim, verimlilik, finans, hobby, B2B…
 - **İhtiyaç türleri:** Sadece acı değil — verimlilik, statü, tasarruf, alışkanlık
-- **Portföy:** Konuşma = #1; bu departman #2–#5 ve sonrası
+- **Portföy:** portfolio rank #1 app (`project_index.json` → `flagship`); bu departman #2–#5 ve sonrası
 
 ---
 
@@ -60,4 +60,5 @@ Yeni uygulama fikirlerini **yapmaya değer mi** sorusuyla değerlendirir. Çıkt
 
 ## Flagship
 
-`projects/konusma.md` — Konuşma referans değerlendirmesi (isteğe bağlı; tamamlandıkça güncellenir).
+Per-project flagship tanımı: `project_index.json` → `flagship` (slug, package, name, portfolio_rank).  
+İsteğe bağlı referans değerlendirmesi: `projects/{flagship.slug}.md` — tamamlandıkça güncellenir.

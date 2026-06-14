@@ -20,7 +20,7 @@ Mimar fikir söylemeden, Play Store (ve ileride App Store) + mevcut istihbaratta
 ┌─────────────────────────────────────────────────────────┐
 │  Growth (DEĞİŞMEZ)                                       │
 │  run_demand_intelligence.sh → governance/market/       │
-│  Konuşma rakipleri, VOC, finans modelleri               │
+│  Active product rakipleri, VOC, finans modelleri        │
 └───────────────────────────┬─────────────────────────────┘
                             │ READ ONLY
                             ▼

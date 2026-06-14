@@ -32,9 +32,9 @@
 
 ## Global Leadership
 
-- Konuşma composite: **52.5**
-- Leader benchmark avg: **74.2**
-- Leadership score: **46/100**
+- Flagship app composite: **{{FLAGSHIP_COMPOSITE}}** *(bootstrap — per `project_index.json`)*
+- Leader benchmark avg: **{{LEADER_BENCHMARK_AVG}}**
+- Leadership score: **{{LEADERSHIP_SCORE}}/100**
 
 ---
 

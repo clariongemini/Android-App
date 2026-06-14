@@ -61,7 +61,7 @@ Kaynak: `output/*_questions.json`, `emotion_map.json`
 
 ## 6. Store yorumları — 1★ / 2★ / 3★
 
-| Rakip | 1★ tema | 2★ tema | 3★ tema | Konuşma fırsatı |
+| Rakip | 1★ tema | 2★ tema | 3★ tema | {{APP_NAME}} fırsatı |
 |-------|---------|---------|---------|-----------------|
 
 Kaynak: `scraper_output/`, `content_gaps.json`
@@ -79,7 +79,7 @@ Kaynak: `output/exercise_scope_audit.json`, `exercise_scope_targets.json`
 
 ## 8. İçerik / özellik / AI boşlukları
 
-| Boşluk türü | Kullanıcı talebi | Rakiplerde | Konuşma durumu | Öncelik |
+| Boşluk türü | Kullanıcı talebi | Rakiplerde | {{APP_NAME}} durumu | Öncelik |
 |-------------|------------------|------------|----------------|---------|
 
 Kaynak: `output/content_gaps.json`

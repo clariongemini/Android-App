@@ -1,29 +1,29 @@
 {
   "version": "1.0",
   "description": "Architecture dependency rules — replace PACKAGE with your app package",
-  "package_placeholder": "com.ulas.factory",
+  "package_placeholder": "com.example.app",
   "rules": [
     {
-      "from": "com.ulas.factory.ui.screens",
-      "to": "com.ulas.factory.data.local.dao",
+      "from": "com.example.app.ui.screens",
+      "to": "com.example.app.data.local.dao",
       "severity": "error",
       "note": "UI must not access DAO directly"
     },
     {
-      "from": "com.ulas.factory.domain.model",
-      "to": "com.ulas.factory.ui",
+      "from": "com.example.app.domain.model",
+      "to": "com.example.app.ui",
       "severity": "error",
       "note": "Domain must not depend on UI"
     },
     {
-      "from": "com.ulas.factory.domain.usecase",
-      "to": "com.ulas.factory.ui",
+      "from": "com.example.app.domain.usecase",
+      "to": "com.example.app.ui",
       "severity": "error",
       "note": "UseCase must not depend on UI"
     },
     {
-      "from": "com.ulas.factory.ui",
-      "to": "com.ulas.factory.repository",
+      "from": "com.example.app.ui",
+      "to": "com.example.app.repository",
       "severity": "error",
       "note": "ViewModel must use UseCase not Repository"
     }

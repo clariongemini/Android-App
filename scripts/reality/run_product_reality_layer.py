@@ -19,38 +19,26 @@ BIRTH_REG = OUT / "FEATURE_BIRTH_REGISTRY.json"
 
 CHAIN = ["research", "content", "android", "qa", "release"]
 
-# User-facing reality — did it reach the user?
-REALITY_CHECKS: dict[str, list[tuple[str, str, str | None]]] = {
-    "F001": [
-        ("file", "app/src/main/assets/content/tr/age_4_7.json", '"id": "r"'),
-        ("file", "app/src/main/assets/content/tr/age_4_7.json", '"id": "sh"'),
-        ("file", "app/src/main/assets/content/tr/age_4_7.json", '"id": "l"'),
-        ("code", "app/src/main/java/com/konusma/data/local/dao/PhonemeProgressDao.kt", None),
-    ],
-    "F002": [
-        ("file", "app/src/main/assets/content/tr/late_talker/phrase_bank_v1.json", '"featureId": "F002"'),
-        ("file", "app/src/main/java/com/konusma/repository/LateTalkerPhraseRepository.kt", None),
-        ("grep", "app/src/main/java/com/konusma/domain/model/AnalyticsEvent.kt", r"F002_PHRASE_COMPLETED"),
-        ("grep", "curriculum/late_talker/inventory/phrase_inventory_tr_v1.json", r'"current_count": 1000'),
-        ("grep", "curriculum/late_talker/inventory/phrase_inventory_en_v1.json", r'"current_count": 1000'),
-        ("grep", "app/src/main/java/com/konusma/ui", r"LateTalkerPhrase|PhraseSession|late_talker"),
-        ("grep", "governance/reality/F002_RELEASE_GATE.json", r'"f002_release_status": "RELEASED"'),
-    ],
-    "F003": [
-        ("file", "app/src/main/java/com/konusma/domain/usecase/GetDailyTaskUseCase.kt", None),
-        ("grep", "app/src/main/java/com/konusma/ui/screens/DashboardScreen.kt", r"dailyTask|DailyTask"),
-        ("file", "curriculum/daily_practice_engine.json", None),
-    ],
-    "F004": [
-        ("grep", "app/src/main/java", r"SpeechRecognizer|stt|clarityScore"),
-    ],
-    "F005": [
-        ("grep", "app/src/main/java", r"session.*minute|practice.*time|5.*10"),
-    ],
-    "F006": [
-        ("grep", "governance/market", r"store.*language|aso"),
-    ],
-}
+
+def _load_reality_checks() -> dict[str, list[tuple[str, str, str | None]]]:
+    """Project-specific checks — optional governance/reality/REALITY_CHECKS.json per app."""
+    for rel in (
+        "governance/reality/REALITY_CHECKS.json",
+        "templates/governance/REALITY_CHECKS.template.json",
+    ):
+        path = ROOT / rel
+        if not path.exists():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            raw = data.get("checks", data)
+            return {k: [tuple(c) for c in v] for k, v in raw.items()}
+        except (json.JSONDecodeError, TypeError):
+            pass
+    return {}
+
+
+REALITY_CHECKS = _load_reality_checks()
 
 
 def _load(path: Path) -> dict:

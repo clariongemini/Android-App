@@ -59,7 +59,7 @@ Her kayıt: `source`, `query`, `text`, `date`, `matched_intents[]`, `locale`
 
 ---
 
-## Konuşma ürün eşlemesi (forumdan beklenen talepler)
+## Active product eşlemesi (forumdan beklenen talepler)
 
 | Forum kalıbı | Ürün yanıtı |
 |--------------|-------------|
