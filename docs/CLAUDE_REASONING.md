@@ -47,7 +47,7 @@ Over-thinking (aynı cümleyi tekrarlama) yasak.
 - `.cursorrules`
 - `docs/CLAUDE_REASONING.md`
 
-Audit: `test/run-factory-audit.sh` → **V2.7**
+Audit: `scripts/run-factory-audit.sh` → **V2.7**
 
 ## v2.2 (transcript parser)
 

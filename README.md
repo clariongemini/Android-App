@@ -96,7 +96,7 @@
 |:---:|:---|:---:|
 | Fabrika sağlığı | `./scripts/factory-health.sh` | 100 / 100 |
 | Bileşik denetim | `./scripts/factory-quality-gate.sh` | CI + pre-commit |
-| Smoke denetimi | `test/run-all-tests.sh` | 40+ kontrol + AI Studio lab |
+| Smoke denetimi | `scripts/run-factory-audit.sh` | 40+ kontrol + template build |
 
 <sub>Designed and maintained by <strong><a href="docs/AUTHOR.md">Ulaş Kaşıkcı</a></strong> · Android factory template · Cursor + Executive OS</sub>
 
@@ -142,7 +142,7 @@ Fabrika Cursor Agent kurallarına göre çalışır; düz sohbet LLM'i ile aynı
 | Denetim | Yok | **Hiyerarşik audit** — tek ajan onayı yasak |
 | Gerçek dünya verisi | Sınırlı | **MCP**: Browser, GitHub, Docker |
 | Komutlar | Yok | `/baslat` `/devam-et` `/denetle` `/faz-durumu` |
-| Otomatik doğrulama | Yok | `pre-commit` + CI + `factory-quality-gate.sh` + `test/run-all-tests.sh` |
+| Otomatik doğrulama | Yok | `pre-commit` + CI + `factory-quality-gate.sh` + `run-factory-audit.sh` |
 
 **Cursor yoksa** bu repo statik dokümantasyon + Gradle şablonu. **Cursor varsa** YAPILACAKLAR, ajanlar ve denetim scriptleri devreye girer.
 
@@ -161,7 +161,7 @@ Same factory; English labels in tables below. Expects Cursor Agent rules—not a
 | Audit | None | **Hierarchical audit** — single-agent approval forbidden |
 | Real-world data | Limited | **MCP**: Browser, GitHub, Docker |
 | Commands | None | `/baslat` `/devam-et` `/denetle` `/faz-durumu` |
-| Automated validation | None | `pre-commit` + CI + `factory-quality-gate.sh` + `test/run-all-tests.sh` |
+| Automated validation | None | `pre-commit` + CI + `factory-quality-gate.sh` + `run-factory-audit.sh` |
 
 **Without Cursor:** static docs + template. **With Cursor:** phase gates, agents, audit scripts.
 
@@ -571,9 +571,9 @@ python3 scripts/governance/validate-audit-chain.py
 
 ```bash
 ./scripts/factory-quality-gate.sh   # Tüm doğrulamalar — hedef 100/100
-./test/run-all-tests.sh             # Orkestratör: audit + AI Studio lab + kalite kapısı
-./test/bootstrap-aistudio-lab.sh    # Stitch/AI Studio bootstrap canlı infaz (fixture)
-./test/bootstrap-smoke-app.sh       # FactorySmoke uygulamasını oluştur
+./scripts/run-factory-audit.sh        # 40+ fabrika kontrolü → docs/AUDIT_REPORT.md
+./scripts/ci-template-build.sh      # Template assembleDebug (JDK 17+)
+./scripts/verify-environment.sh       # JDK + MCP + meta
 ./scripts/pre-commit.sh             # Commit öncesi denetim
 ./gradlew assembleDebug             # Android derleme kanıtı (JDK 17+)
 ```
@@ -678,9 +678,8 @@ Monetization: [e.g. subscription, 7-day free trial]
 
 ```bash
 ./scripts/factory-quality-gate.sh   # All validations — target 100/100
-./test/run-factory-audit.sh         # Smoke app + 40+ factory checks
-./test/run-all-tests.sh             # Full orchestrator (v2.1.0-stable)
-./test/bootstrap-smoke-app.sh         # Create FactorySmoke test app
+./scripts/run-factory-audit.sh
+./scripts/ci-template-build.sh
 ./scripts/pre-commit.sh             # Pre-commit audit
 ./gradlew assembleDebug             # Android build proof (JDK 17+)
 ```
@@ -698,7 +697,7 @@ Monetization: [e.g. subscription, 7-day free trial]
 │   ├── skills/               # planner, executor, zero-hallucination, audit
 │   ├── agents/               # phase-verifier, plan-expander, auditors
 │   └── snapshots/            # Runtime handoff (build/recovery — gitignore)
-├── test/                     # FactorySmoke + run-all-tests + AI Studio lab
+├── scripts/                  # Doğrulama, bootstrap, audit (run-factory-audit.sh)
 │   ├── bootstrap-smoke-app.sh
 │   ├── run-factory-audit.sh
 │   ├── AUDIT_REPORT.md
@@ -848,18 +847,16 @@ Dizin: [`docs/03-STANDARDS/`](docs/03-STANDARDS/)
 | `validate-layer-slices.sh` | 33 katman manifest dilimleri | CI |
 | `pre-commit.sh` | Yukarıdakilerin birleşimi | Her commit |
 
-### Fabrika Smoke Test (`test/`)
-
-Fabrika kökünü değiştirmeden **40+ kontrol** + izole Android uygulaması + **AI Studio bootstrap lab**:
+### Fabrika doğrulama (`scripts/`)
 
 ```bash
-./test/run-all-tests.sh           # Önerilen — tam paket (v2.1.0-stable)
-./test/bootstrap-smoke-app.sh     # FactorySmoke (test/factory-smoke-app)
-./test/bootstrap-aistudio-lab.sh # Ham AI Studio fixture → bootstrap-external-project
-./test/run-factory-audit.sh       # F0–F8 + Cursor bridge → test/AUDIT_REPORT.md
+./scripts/factory-quality-gate.sh   # Önerilen — tam kapı (v2.1.0-stable)
+./scripts/run-factory-audit.sh      # F0–F8 + reasoning → docs/AUDIT_REPORT.md
+./scripts/ci-template-build.sh      # Gradle template derleme kanıtı
+./scripts/bootstrap-external-project.sh  # Stitch/AI Studio import
 ```
 
-Detay: [`test/README.md`](test/README.md) · Rapor: [`test/AUDIT_REPORT.md`](test/AUDIT_REPORT.md)
+Detay: [`docs/BOOTSTRAP.md`](docs/BOOTSTRAP.md) · Rapor: [`docs/AUDIT_REPORT.md`](docs/AUDIT_REPORT.md) (üretilir, gitignore)
 
 ```bash
 ./scripts/factory-quality-gate.sh   # ✅ hedef: 100/100
@@ -898,13 +895,12 @@ git submodule update --remote .factory && ./.factory/scripts/sync-standards.sh .
 Template'i güncelledikten veya büyük değişiklikten sonra:
 
 ```bash
-./test/run-all-tests.sh           # Tam paket — audit + lab + quality gate
-./test/bootstrap-smoke-app.sh
-./test/bootstrap-aistudio-lab.sh  # AI Studio import doğrulama
-./test/run-factory-audit.sh       # 40/40 hedef — BUILD satırı JDK 17+ gerektirir
+./scripts/run-factory-audit.sh
+./scripts/factory-quality-gate.sh
+./scripts/ci-template-build.sh
 ```
 
-Detay: [`test/README.md`](test/README.md) · [`docs/BOOTSTRAP.md`](docs/BOOTSTRAP.md)
+Detay: [`docs/BOOTSTRAP.md`](docs/BOOTSTRAP.md)
 
 ### Senaryo E — Stitch / AI Studio import
 
@@ -917,7 +913,7 @@ export FACTORY_REPO=~/Android-App-Factory
 
 Cursor: `/import-aistudio` → `/baslat` — Detay: [`docs/AI_STUDIO_IMPORT.md`](docs/AI_STUDIO_IMPORT.md)
 
-**Fabrika doğrulaması (CI/lokal):** `./test/bootstrap-aistudio-lab.sh` veya `./test/run-all-tests.sh`
+**Fabrika doğrulaması (CI/lokal):** `./scripts/factory-quality-gate.sh` · `./scripts/run-factory-audit.sh`
 
 ---
 
@@ -934,7 +930,7 @@ Cursor: `/import-aistudio` → `/baslat` — Detay: [`docs/AI_STUDIO_IMPORT.md`]
 | [`docs/CURSOR_CONTEXT_BUDGET.md`](docs/CURSOR_CONTEXT_BUDGET.md) | Token / okuma sırası |
 | [`docs/CURSOR_TERMINAL_BRIDGE.md`](docs/CURSOR_TERMINAL_BRIDGE.md) | Gradle/Maestro terminal köprüsü |
 | [`docs/STATE_RECOVERY.md`](docs/STATE_RECOVERY.md) | Truncation durum kurtarma |
-| [`test/README.md`](test/README.md) | FactorySmoke audit harness |
+| [`docs/FACTORY_META/README.md`](docs/FACTORY_META/README.md) | Fabrika vizyon & roadmap |
 | [`docs/MCP_SETUP.md`](docs/MCP_SETUP.md) | MCP kurulum kılavuzu |
 | [`governance/FACTORY_REPO_POLICY.md`](governance/FACTORY_REPO_POLICY.md) | Git vs runtime politika |
 | [`AGENTS.md`](AGENTS.md) | Tam ajan dizini |

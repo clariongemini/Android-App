@@ -14,21 +14,14 @@ check_jdk() {
     local ver
     ver="$(java -version 2>&1 | head -1)"
     echo "  ✅ Java — $ver"
-    if [[ -x "$ROOT/test/factory-smoke-app/gradlew" ]]; then
-      if (cd "$ROOT/test/factory-smoke-app" && ./gradlew assembleDebug --quiet) &>/dev/null; then
-        echo "  ✅ factory-smoke-app assembleDebug"
-      else
-        echo "  ⚠️  assembleDebug başarısız — AGP/SDK kontrol edin"
-        WARN=$((WARN + 1))
-      fi
+    if bash "$ROOT/scripts/ci-template-build.sh" &>/dev/null; then
+      echo "  ✅ ci-template-build assembleDebug"
     else
-      echo "  ⏭️  gradlew yok — ./test/bootstrap-smoke-app.sh çalıştırın"
+      echo "  ⚠️  ci-template-build başarısız"
       WARN=$((WARN + 1))
     fi
   else
-    echo "  ❌ JDK 17+ yok — https://adoptium.net veya Android Studio JDK"
-    echo "     CI smoke-build job assembleDebug kanıtını sağlar"
-    echo "     Kurulum sonrası: ./test/run-all-tests.sh"
+    echo "  ⏭️  JDK yok — CI smoke-build job kanıt sağlar"
     WARN=$((WARN + 1))
   fi
 }

@@ -1,7 +1,7 @@
 # Modül Haritası — Factory (fabrika şablonu)
 
 > **Package:** `com.ulas.factory` · **Sürüm:** v2.1.0-stable  
-> Kaynak iskelet: `templates/android/project/settings.gradle.kts` · Smoke: `test/factory-smoke-app`
+> Kaynak iskelet: `templates/android/project/settings.gradle.kts` · CI: `scripts/ci-template-build.sh`
 
 ## Core modüller
 

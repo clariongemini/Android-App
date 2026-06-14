@@ -40,11 +40,10 @@ secrets.properties
 # OS
 Thumbs.db
 
-# Factory smoke test (generated app + audit runtime)
-test/factory-smoke-app/.gradle/
-test/factory-smoke-app/build/
-test/factory-smoke-app/local.properties
-test/aistudio-lab-run/
+# Factory — yerel test/ klasörü commit dışı (Stitch lab vb. yerelde)
+test/
+
+docs/AUDIT_REPORT.md
 
 .factory/project.json
 .factory/bootstrap_manifest.json

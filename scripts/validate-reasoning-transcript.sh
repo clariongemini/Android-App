@@ -39,7 +39,7 @@ PY
 echo "==> Reasoning transcript XML doğrulama (v2.2)"
 
 # Bilinçli geçerli fixture
-scan_file "$ROOT/test/fixtures/reasoning-transcript-valid.md"
+scan_file "$ROOT/templates/fixtures/reasoning-transcript-valid.md"
 
 # Opsiyonel: CLI argümanları (agent transcript export)
 for arg in "$@"; do

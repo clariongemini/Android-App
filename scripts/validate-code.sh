@@ -121,9 +121,9 @@ REQUIRED_FILES=(
   ".cursor/rules/20-aistudio-import.mdc"
   ".cursor/commands/import-aistudio.md"
   "scripts/scaffold-android-project-to.sh"
-  "test/bootstrap-smoke-app.sh"
-  "test/run-factory-audit.sh"
-  "test/README.md"
+  "scripts/ci-template-build.sh"
+  "scripts/run-factory-audit.sh"
+  "templates/fixtures/reasoning-transcript-valid.md"
   "docs/BOOTSTRAP.md"
   "docs/02-ARCHITECTURE/ANDROID_STRUCTURE.md"
   "docs/03-STANDARDS/LIQUID_GLASS.md"
@@ -144,7 +144,7 @@ for file in "${REQUIRED_FILES[@]}"; do
 done
 
 # Wrapper scripts must be executable
-for script in run-ceo-cycle init-governance agent-approval-gate gradle-build-loop run-maestro state-recovery scaffold-android-project-to bootstrap-external-project validate-factory-version validate-reasoning-template-xml validate-reasoning-transcript verify-environment; do
+for script in run-ceo-cycle init-governance agent-approval-gate gradle-build-loop run-maestro state-recovery scaffold-android-project-to bootstrap-external-project validate-factory-version validate-reasoning-template-xml validate-reasoning-transcript verify-environment ci-template-build run-factory-audit audit-module-map; do
   if [[ ! -x "$ROOT/scripts/${script}.sh" ]]; then
     echo "HATA: Çalıştırılabilir değil — scripts/${script}.sh"
     ERRORS=$((ERRORS + 1))

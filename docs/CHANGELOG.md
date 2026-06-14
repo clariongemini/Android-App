@@ -9,6 +9,11 @@
 - `scripts/validate-reasoning-template-xml.sh` — şablon XML açılış/kapanış dengesi
 - Audit **V2.7–V2.9** (XML script, negative_constraints, kelime cap)
 
+### Removed (template cleanup — 2026-06-14)
+
+- `test/` dizini kaldırıldı — doğrulama `scripts/run-factory-audit.sh`, `scripts/ci-template-build.sh`
+- Yerel Stitch lab: `bootstrap-external-project.sh` (harici dizin)
+
 ### Added (gap closure — 2026-06-14)
 
 - `docs/FACTORY_META/` — fabrika F1 vizyon, pazar, monetizasyon, roadmap

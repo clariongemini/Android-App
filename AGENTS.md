@@ -54,7 +54,9 @@ Her Android projesine aktarılabilir fabrika paketi (Executive OS + 16 ajan) · 
 python3 scripts/governance/validate-audit-chain.py
 python3 scripts/governance/validate-yapilacaklar.py
 ./scripts/agent-approval-gate.sh
-./test/run-all-tests.sh              # v2.1 — audit + AI Studio lab + quality gate
+./scripts/factory-quality-gate.sh
+./scripts/run-factory-audit.sh
+./scripts/verify-environment.sh
 ```
 
 ## YAPILACAKLAR (zorunlu plan)

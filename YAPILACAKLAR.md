@@ -155,7 +155,7 @@ Uygulama sırasında tespit edilen eksikler (otomatik veya ajan önerisi):
 | EK-20260614-09 | F0 | AI Studio bootstrap lab | `bootstrap-external-project.sh` canlı infaz | tamamlandı |
 | EK-20260614-11 | F1 | Fabrika meta vizyon | docs/FACTORY_META/* | tamamlandı |
 | EK-20260614-12 | F0 | verify-environment.sh | JDK + MCP + meta raporu | tamamlandı |
-| EK-20260614-14 | F2 | MODULE_MAP + DATA_FLOW + audit-module-map | Kat Döşeme kapanışı | tamamlandı |
+| EK-20260614-15 | F0 | `test/` kaldırıldı | Saf fabrika template — doğrulama `scripts/` | tamamlandı |
 
 ---
 

@@ -13,7 +13,7 @@
 - [x] negative_constraints + kelime cap 150–200
 - [x] validate-reasoning-template-xml.sh + audit V2.7–V2.9
 - [x] Sürüm 2.1.0-stable senkron
-- [x] `test/run-all-tests.sh` orkestratör + `bootstrap-aistudio-lab.sh`
+- [x] Saf template — `test/` kaldırıldı; `scripts/run-factory-audit.sh` + `ci-template-build.sh`
 - [x] `factory-quality-gate.sh` Toplam/grep düzeltmesi (set -e sessiz exit)
 - [x] Dokümantasyon denetimi — v2.1 tutarlılık, profesyonel dil
 - [x] F1 FACTORY_META vizyon + roadmap

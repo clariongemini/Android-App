@@ -35,4 +35,4 @@ Cursor IDE üzerinde Android (Kotlin/Compose) geliştiren geliştiriciler; AI ag
 - PatrickJS/awesome-cursorrules — Cursor Project Rules (`.mdc`)
 - warrenth/nowinandroid-agent-kit — Android agent harness (2026)
 - TMHSDigital/Mobile-App-Developer-Tools v0.4.0 — MCP mobile tooling
-- Fabrika iç kanıt: `test/AUDIT_REPORT.md`, `test/bootstrap-aistudio-lab.sh`
+- Fabrika iç kanıt: `scripts/run-factory-audit.sh`, `scripts/ci-template-build.sh`

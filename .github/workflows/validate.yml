@@ -65,13 +65,8 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Bootstrap smoke app
-        run: bash test/bootstrap-smoke-app.sh
-
-      - name: assembleDebug (factory-smoke-app)
-        run: |
-          cd test/factory-smoke-app
-          ./gradlew assembleDebug --no-daemon --quiet
-
       - name: Reasoning transcript parser (v2.2)
         run: bash scripts/validate-reasoning-transcript.sh
+
+      - name: CI template build (assembleDebug)
+        run: bash scripts/ci-template-build.sh

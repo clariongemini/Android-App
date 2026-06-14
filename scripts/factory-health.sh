@@ -149,10 +149,11 @@ if [[ -f "$ROOT/YAPILACAKLAR.md" ]]; then
 else
   check_file "templates/YAPILACAKLAR.template.md" && c=$((c + 1))
 fi
+check_exec "scripts/run-factory-audit.sh" && c=$((c + 1))
+check_exec "scripts/ci-template-build.sh" && c=$((c + 1))
 check_exec "scripts/verify-environment.sh" && c=$((c + 1))
-check_exec "scripts/validate-reasoning-transcript.sh" && c=$((c + 1))
 check_file "docs/FACTORY_META/PRODUCT_BRIEF.md" && c=$((c + 1))
-report "Test & CI/CD & Governance" $c 12
+report "Test & CI/CD & Governance" $c 14
 
 echo ""
 echo ""
