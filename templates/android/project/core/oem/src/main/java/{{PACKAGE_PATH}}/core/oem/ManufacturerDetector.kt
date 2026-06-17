@@ -2,11 +2,15 @@ package {{PACKAGE}}.core.oem
 
 import android.os.Build
 
+import javax.inject.Inject
+import javax.inject.Singleton
+
 interface ManufacturerDetector {
     fun current(): Manufacturer
 }
 
-class DefaultManufacturerDetector : ManufacturerDetector {
+@Singleton
+class DefaultManufacturerDetector @Inject constructor() : ManufacturerDetector {
     override fun current(): Manufacturer {
         val brand = Build.BRAND.lowercase()
         val manufacturer = Build.MANUFACTURER.lowercase()

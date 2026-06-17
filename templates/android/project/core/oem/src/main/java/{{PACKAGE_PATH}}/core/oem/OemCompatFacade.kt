@@ -1,5 +1,8 @@
 package {{PACKAGE}}.core.oem
 
+import javax.inject.Inject
+import javax.inject.Singleton
+
 /**
  * OEM uyumluluk tek giriş noktası.
  * Arka plan işi planlamadan önce [prepareForBackgroundWork] çağrılmalı.
@@ -12,7 +15,8 @@ interface OemCompatFacade {
     fun openAutostartSettings()
 }
 
-class DefaultOemCompatFacade(
+@Singleton
+class DefaultOemCompatFacade @Inject constructor(
     private val detector: ManufacturerDetector,
     private val batteryOptimizer: OemBatteryOptimizer,
     private val autostartGuide: OemAutostartGuide,
